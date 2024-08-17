@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome to our cab302 project!");
-        System.out.printf("Hello, im Liam.");
-        System.out.printf("testing");
+        System.out.printf("Hello and welcome to our cab302 project!\n");
+        System.out.printf("Hello, im Liam.\n");
+        System.out.printf("testing\n");
     }
 }
