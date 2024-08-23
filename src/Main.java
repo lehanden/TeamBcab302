@@ -7,6 +7,7 @@ public class Main {
         System.out.printf("Hello and welcome to our cab302 project!\n");
         System.out.printf("Hello, im Liam.\n");
         System.out.println("Hello, i'm Darcy");
+        System.out.println("Hello, i'm Umang");
         System.out.printf("testing\n");
     }
 }
