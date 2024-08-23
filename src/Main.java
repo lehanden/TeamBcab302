@@ -8,6 +8,7 @@ public class Main {
         System.out.printf("Hello, im Liam.\n");
         System.out.println("Hello, i'm Darcy");
         System.out.println("Hello, i'm Umang");
+        System.out.println("Hello, i'm Bert");
         System.out.println("Welcome all to Team B, I'm Rob");
         System.out.printf("testing\n");
     }
