@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.text.Font?>
 <VBox alignment="TOP_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.dinnerreserver.controller.MainController"
 >
@@ -23,6 +24,11 @@
             <Button text="New" onAction="#onAdd" maxWidth="Infinity"/>
         </VBox>-->
         <VBox spacing="10.0" prefWidth="400" fx:id="userContainer">
+            <Label layoutX="212.0" layoutY="52.0" text="SB EATS">
+                <font>
+                    <Font size="60.0" />
+                </font>
+            </Label>
             <Label text="Create an Account." />
             <GridPane hgap="5.0" vgap="5.0" >
                 <columnConstraints>
@@ -34,7 +40,6 @@
                 <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity"/>
-                <!--<TextField fx:id="lastNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />-->
                 <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </GridPane>
@@ -42,7 +47,7 @@
                 <Button text="Create Account" onAction="#onCreateAccount"/>
 
             </HBox>
-            <Label text="User login." />
+            <!--<Label text="User login." />
             <GridPane hgap="5.0" vgap="5.0" >
                 <columnConstraints>
                     <ColumnConstraints minWidth="70" />
@@ -55,6 +60,6 @@
             </GridPane>
             <HBox spacing="10.0" alignment="CENTER">
                 <Button text="Login" onAction="#onLogin"/>
-            </HBox>
+            </HBox>-->
         </VBox>
 </VBox>

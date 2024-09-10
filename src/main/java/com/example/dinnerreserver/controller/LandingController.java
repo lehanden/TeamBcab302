@@ -1,0 +1,34 @@
+package com.example.dinnerreserver.controller;
+
+import com.example.dinnerreserver.HelloApplication;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+
+import java.io.IOException;
+
+import static com.example.dinnerreserver.HelloApplication.*;
+
+public class LandingController {
+    
+    @FXML
+    private void onSignUpButton() throws IOException
+    {
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("signuppage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    private void onSignInButton() throws IOException
+    {
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("loginpage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
+    
+}
