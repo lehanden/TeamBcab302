@@ -8,26 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.RestaurantController">
     <AnchorPane prefHeight="362.0" prefWidth="644.0" VBox.vgrow="ALWAYS">
+        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="MockRestaurant" onAction="#MockRestaurant" />
         <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="34.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
             <Image url="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
         </ImageView>
-        <Text fx:id="name" layoutX="264.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0">
-            <font>
-                <Font size="36.0" />
-            </font>
-        </Text>
-        <Text fx:id="address" layoutX="264.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Text>
-        <Text fx:id="description" layoutX="264.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-        <ImageView fitHeight="192.0" fitWidth="267.0" layoutX="284.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
-        </ImageView>
-      <Button layoutX="320.0" layoutY="190.0" mnemonicParsing="false" text="Book" />
-      <Button layoutX="450.0" layoutY="190.0" mnemonicParsing="false" text="Menu" />
+        <VBox layoutX="260.0" layoutY="49.0">
+            <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0">
+                <font>
+                    <Font size="36.0" />
+                </font>
+            </Text>
+            <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0"/>
+        </VBox>
+        <Button layoutX="320.0" layoutY="210.0" mnemonicParsing="false" text="Book" />
+        <Button layoutX="405.0" layoutY="210.0" mnemonicParsing="false" text="Menu" />
     </AnchorPane>
 </VBox>

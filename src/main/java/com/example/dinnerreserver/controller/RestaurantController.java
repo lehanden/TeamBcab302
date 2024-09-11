@@ -1,11 +1,8 @@
 package com.example.dinnerreserver.controller;
 
-import com.example.dinnerreserver.HelloApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import com.example.dinnerreserver.model.Restaurant;
 
 import java.io.IOException;
@@ -27,9 +24,10 @@ public class RestaurantController {
         name.setText(restaurant.getName());
         address.setText(restaurant.getAddress());
         description.setText(restaurant.getDescription());
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("restaurantpage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        stage.setScene(scene);
+    }
+
+    @FXML
+    public void MockRestaurant(ActionEvent actionEvent) throws IOException {
+        selectRestaurant(new Restaurant("San Kai Japanese Restaurant", "164 Grey St, South Brisbane", "Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating."));
     }
 }
