@@ -1,13 +1,19 @@
 package com.example.dinnerreserver.controller;
 
+import com.example.dinnerreserver.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-import com.example.dinnerreserver.model.Restaurant;
 
 import java.io.IOException;
 
 public class RestaurantController {
+
+    IRestaurantDAO restaurantDAO;
+    public RestaurantController() {
+        restaurantDAO = new SqliteRestaurantDAO();
+    }
 
     @FXML
     private Text name;
@@ -19,15 +25,15 @@ public class RestaurantController {
     private Text description;
 
     @FXML
-    private void selectRestaurant(Restaurant restaurant) throws IOException
+    private Text rating;
+
+    @FXML
+    public void selectRestaurant(Integer restaurantId) throws IOException
     {
+        Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
         name.setText(restaurant.getName());
         address.setText(restaurant.getAddress());
         description.setText(restaurant.getDescription());
-    }
-
-    @FXML
-    public void MockRestaurant(ActionEvent actionEvent) throws IOException {
-        selectRestaurant(new Restaurant("San Kai Japanese Restaurant", "164 Grey St, South Brisbane", "Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating."));
+        rating.setText(restaurant.getRating().toString());
     }
 }
