@@ -5,11 +5,13 @@ public class Restaurant {
     private String name;
     private String address;
     private String description;
+    private Float rating;
 
-    public Restaurant(String name, String address, String description) {
+    public Restaurant(String name, String address, String description, Float rating) {
         this.name = name;
         this.description = description;
         this.address = address;
+        this.rating = rating;
     }
 
     public int getId() {
@@ -42,5 +44,13 @@ public class Restaurant {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 }
