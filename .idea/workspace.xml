@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="fixing push">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java" afterDir="false" />
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/restaurantpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/restaurantpage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -38,12 +37,12 @@
     &quot;assignee&quot;: &quot;lehanden&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,
-    &quot;accountId&quot;: &quot;2969fdf4-993d-4a7b-9d79-c70a9ca4e23f&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/lehanden/TeamBcab302.git",
+    "accountId": "48e55497-81a2-49ea-9eb7-957e63a5da8b"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -53,24 +52,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;changing-landing&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver",
+    "onboarding.tips.debug.path": "C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -120,7 +120,31 @@
       <option name="project" value="LOCAL" />
       <updated>1725606575708</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added RestaurantController&#10;Update Restaurant class">
+      <option name="closed" value="true" />
+      <created>1726058402432</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726058402432</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added IRestaurantDAO&#10;Added MockRestaurantDAO&#10;Added Book and Menu buttons to restaurantpage.fxml">
+      <option name="closed" value="true" />
+      <created>1726059730249</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726059730249</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml">
+      <option name="closed" value="true" />
+      <created>1726064641108</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1726064641108</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -128,7 +152,10 @@
     <MESSAGE value="second push" />
     <MESSAGE value="login push" />
     <MESSAGE value="fixing push" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing push" />
+    <MESSAGE value="Added RestaurantController&#10;Update Restaurant class" />
+    <MESSAGE value="Added IRestaurantDAO&#10;Added MockRestaurantDAO&#10;Added Book and Menu buttons to restaurantpage.fxml" />
+    <MESSAGE value="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
