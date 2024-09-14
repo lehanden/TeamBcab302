@@ -8,7 +8,7 @@ public class SqliteConnection {
     private static Connection instance = null;
 
     private SqliteConnection() {
-        String url = "jdbc:sqlite:users.db";
+        String url = "jdbc:sqlite:SBEats.db";
         try {
             instance = DriverManager.getConnection(url);
         } catch (SQLException sqlEx) {

@@ -34,8 +34,13 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
 
     public void insertSampleData() {
         try {
-            Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO restaurants (name, address, description, rating) VALUES "
+
+            Statement checkStatement = connection.createStatement();
+            ResultSet resultSet = checkStatement.executeQuery("SELECT COUNT(*) FROM restaurants");
+            if (resultSet.next() && resultSet.getInt(1) == 0) {
+                // Only insert sample data if the table is empty
+                Statement insertStatement = connection.createStatement();
+                String insertQuery = "INSERT INTO restaurants (name, address, description, rating) VALUES "
                     + "('San Kai Japanese Restaurant', " +
                         "'164 Grey St, South Brisbane', " +
                         "'Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating.', " +
@@ -48,7 +53,8 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                         "'3/164 Grey St, South Brisbane QLD 4101', " +
                         "'Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.', " +
                         "3.9)";
-            insertStatement.execute(insertQuery);
+                insertStatement.execute(insertQuery);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +67,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
             statement.setString(1, restaurant.getName());
             statement.setString(2, restaurant.getAddress());
             statement.setString(3, restaurant.getDescription());
-            statement.setString(3, restaurant.getRating().toString());
+            statement.setString(4, restaurant.getRating().toString());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
