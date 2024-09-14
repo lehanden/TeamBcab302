@@ -12,6 +12,7 @@
          <children>
             <Button layoutX="291.0" layoutY="175.0" mnemonicParsing="false" text="Sign Up" onAction="#onSignUpButton"/>
             <Button layoutX="295.0" layoutY="244.0" mnemonicParsing="false" text="Sign In" onAction="#onSignInButton"/>
+            <Button layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="Restaurant Test" onAction="#onRestaurantButton"/>
             <Label layoutX="212.0" layoutY="52.0" text="SB EATS">
                <font>
                   <Font size="60.0" />
