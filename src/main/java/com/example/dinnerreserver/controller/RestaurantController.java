@@ -1,19 +1,14 @@
 package com.example.dinnerreserver.controller;
 
 import com.example.dinnerreserver.model.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class RestaurantController {
 
-    IRestaurantDAO restaurantDAO;
-    public RestaurantController() {
-        restaurantDAO = new SqliteRestaurantDAO();
-    }
+    SqliteRestaurantDAO restaurantDAO;
 
     @FXML
     private Text name;
@@ -26,6 +21,11 @@ public class RestaurantController {
 
     @FXML
     private Text rating;
+
+    public RestaurantController() {
+        restaurantDAO = new SqliteRestaurantDAO();
+        restaurantDAO.insertSampleData();
+    }
 
     @FXML
     public void selectRestaurant(Integer restaurantId) throws IOException

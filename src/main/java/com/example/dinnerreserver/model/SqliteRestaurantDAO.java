@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SqliteRestaurantDAO implements IRestaurantDAO {
+
     private Connection connection;
 
     public SqliteRestaurantDAO() {
@@ -22,7 +23,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "name VARCHAR NOT NULL,"
                     + "address VARCHAR NOT NULL,"
-                    + "description VARCHAR NOT NULL"
+                    + "description VARCHAR NOT NULL,"
                     + "rating FLOAT NOT NULL"
                     + ")";
             statement.execute(query);
@@ -31,28 +32,28 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
         }
     }
 
-    private void insertSampleData() {
+    public void insertSampleData() {
         try {
             Statement checkStatement = connection.createStatement();
             ResultSet resultSet = checkStatement.executeQuery("SELECT COUNT(*) FROM restaurants");
-            if (resultSet.next() && resultSet.getInt(1) == 0) {
+            //if (resultSet.next() && resultSet.getInt(1) == 0) {
                 // Only insert sample data if the table is empty
                 Statement insertStatement = connection.createStatement();
                 String insertQuery = "INSERT INTO restaurants (name, address, description, rating) VALUES "
                         + "('San Kai Japanese Restaurant', " +
                             "'164 Grey St, South Brisbane', " +
                             "'Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating.', " +
-                            "'3'),"
+                            "3.0),"
                         + "('Olé Restaurant', " +
                             "'Shop/B12 Little Stanley St, South Brisbane', " +
                             "'Vibrant Spanish eatery with tapas, sangria bar and stylish decor, plus an intricate wooden ceiling.', " +
-                            "'4.2'),"
+                            "4.2),"
                         + "('Geláre South Bank', " +
                             "'3/164 Grey St, South Brisbane QLD 4101', " +
                             "'Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.', " +
-                            "'3.9')";
+                            "3.9)";
                 insertStatement.execute(insertQuery);
-            }
+            //}
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,11 +91,11 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     @Override
     public Restaurant getRestaurant(int id) {
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM restaurants WHERE id = ?");
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                String name = resultSet.getString("name, address, description, rating");
+                String name = resultSet.getString("name");
                 String address = resultSet.getString("address");
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
