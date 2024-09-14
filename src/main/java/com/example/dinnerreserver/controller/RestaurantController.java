@@ -28,7 +28,7 @@ public class RestaurantController {
     }
 
     @FXML
-    public void selectRestaurant(Integer restaurantId) throws IOException
+    public void selectRestaurant(Integer restaurantId)
     {
         Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
         name.setText(restaurant.getName());
