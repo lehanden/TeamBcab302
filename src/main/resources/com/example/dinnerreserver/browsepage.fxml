@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BrowseController">
+   <children>
+      <ScrollPane layoutX="25.0" layoutY="64.0" prefHeight="318.0" prefWidth="427.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+      <ScrollBar layoutX="453.0" layoutY="64.0" orientation="VERTICAL" prefHeight="318.0" prefWidth="14.0" />
+      <TextField layoutX="25.0" layoutY="28.0" prefHeight="26.0" prefWidth="435.0" promptText="Search..." />
+      <ComboBox layoutX="472.0" layoutY="29.0" prefHeight="26.0" prefWidth="115.0" promptText="Filters" />
+      <Button layoutY="1.0" mnemonicParsing="false" onAction="#onBack" prefHeight="17.0" prefWidth="49.0" text="Back" />
+   </children>
+</AnchorPane>
