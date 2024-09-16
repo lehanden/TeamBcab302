@@ -12,7 +12,7 @@
             <Button layoutX="295.0" layoutY="244.0" mnemonicParsing="false" onAction="#onSignInButton" text="Sign In" />
             <Button layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onAction="#onRestaurantButton" text="Restaurant Test" />
             <Button layoutX="105.0" mnemonicParsing="false" onAction="#onBrowseButton" text="Browse Test" />
-            <Button layoutX="191.0" mnemonicParsing="false" text="Booking Test" />
+            <Button layoutX="191.0" mnemonicParsing="false" onAction="#onBookingPageButton" text="Booking Test" />
             <Button layoutX="282.0" mnemonicParsing="false" onAction="#onUserProfileButton" text="User-Profile Test" />
             <Label layoutX="212.0" layoutY="52.0" text="SB EATS">
                <font>
