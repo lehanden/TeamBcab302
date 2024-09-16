@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Set up blank User-Profile page. Linked to landingpage">
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/users.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +19,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -42,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,
-    &quot;accountId&quot;: &quot;e077ce99-e0a2-4229-97a5-542e99d97697&quot;
+    &quot;accountId&quot;: &quot;48e55497-81a2-49ea-9eb7-957e63a5da8b&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -58,21 +56,19 @@
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/darcy/IdeaProjects/TeamBcab302/src/main/java/com/example/dinnerreserver&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -148,43 +144,8 @@
       <option name="project" value="LOCAL" />
       <updated>1726064641108</updated>
     </task>
-    <task id="LOCAL-00009" summary="Added basic Browse Page, linked to landingpage by test button">
-      <option name="closed" value="true" />
-      <created>1726398733416</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726398733416</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added back button to Restaurant page for increased functionality">
-      <option name="closed" value="true" />
-      <created>1726399089411</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726399089411</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Set up blank User-Profile page. Linked to landingpage">
-      <option name="closed" value="true" />
-      <created>1726471913636</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726471913637</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="9" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first push" />
@@ -193,12 +154,8 @@
     <MESSAGE value="fixing push" />
     <MESSAGE value="Added RestaurantController&#10;Update Restaurant class" />
     <MESSAGE value="Added IRestaurantDAO&#10;Added MockRestaurantDAO&#10;Added Book and Menu buttons to restaurantpage.fxml" />
-    <MESSAGE value="Fixed warnings" />
     <MESSAGE value="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml" />
-    <MESSAGE value="Added basic Browse Page, linked to landingpage by test button" />
-    <MESSAGE value="Added back button to Restaurant page for increased functionality" />
-    <MESSAGE value="Set up blank User-Profile page. Linked to landingpage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up blank User-Profile page. Linked to landingpage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -209,11 +166,6 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="ClassNotFoundException1976_DebugLabel" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DinnerReserver$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1725687864772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
