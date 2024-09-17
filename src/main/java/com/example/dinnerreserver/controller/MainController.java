@@ -34,7 +34,7 @@ public class MainController {
     }
 
     @FXML
-    private void onCreateAccount() {
+    private void onCreateAccount() throws IOException {
         String username = usernameTextField.getText();
         String email = emailTextField.getText();
         String password = passwordTextField.getText();
@@ -45,6 +45,7 @@ public class MainController {
             clearCreateAccountFields();
             //System.out.println("Creation Successful! Welcome "+ username);
             showAlert(AlertType.INFORMATION, "Creation Successful", "Account Created, welcome " + username + ".");
+            onForward();
         }
         else{
             showAlert(AlertType.INFORMATION, "Creation Unsuccessful", "Please fill in all fields.");
@@ -52,7 +53,7 @@ public class MainController {
     }
 
     @FXML
-    private void onLogin() {
+    private void onLogin() throws IOException {
         String username = loginUsernameTextField.getText();
         String password = loginPasswordTextField.getText();
 
@@ -61,6 +62,7 @@ public class MainController {
             // Login successful
             //System.out.println("Log In Successful!");
             showAlert(AlertType.INFORMATION, "Log in Successful", "Welcome "+ username + ".");
+            onForward();
         } else {
             //System.out.println("Log in Unsuccessful");
             // Login failed
@@ -80,6 +82,14 @@ public class MainController {
     private void onBack() throws IOException{
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    private void onForward() throws IOException{
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }
