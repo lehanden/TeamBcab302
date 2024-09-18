@@ -2,10 +2,51 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BookingController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BookingController">
    <children>
-      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="50.0" layoutY="30.0" text="Restaurant Name">
+               <font>
+                  <Font size="24.0"/>
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="60.0" text="Restaurant Address">
+               <font>
+                  <Font size="14.0"/>
+               </font>
+            </Label>
+
+
+            <!-- Number of People -->
+            <Label layoutX="250.0" layoutY="100.0" text="Number of People:"/>
+            <TextField fx:id="peopleTextField" layoutX="400.0" layoutY="95.0" prefWidth="150.0"/>
+
+            <!-- Time Selection -->
+            <Label layoutX="250.0" layoutY="150.0" text="Select time:"/>
+            <ComboBox fx:id="timeComboBox" layoutX="400.0" layoutY="145.0" prefWidth="150.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="5:00 PM"/>
+                     <String fx:value="6:00 PM"/>
+                     <String fx:value="7:00 PM"/>
+                     <String fx:value="8:00 PM"/>
+                     <String fx:value="9:00 PM"/>
+                     <String fx:value="10:00 PM"/>
+                     <String fx:value="10:30 PM"/>
+                  </FXCollections>
+               </items>
+            </ComboBox>
+
+            <!-- Book and Cancel Buttons -->
+            <Button fx:id="bookButton" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" text="Book" />
+            <Button fx:id="cancelButton" layoutX="450.0" layoutY="250.0" mnemonicParsing="false" text="Cancel" />
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</VBox>
