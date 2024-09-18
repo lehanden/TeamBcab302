@@ -1,5 +1,6 @@
 package com.example.dinnerreserver.controller;
 
+import com.example.dinnerreserver.model.SqliteRestaurantDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

@@ -56,6 +56,7 @@ public class LandingController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         UserProfileController userprofileController = fxmlLoader.getController();
+        userprofileController.selectUser(1);
         stage.setScene(scene);
     }
     public void onBookingPageButton() throws IOException

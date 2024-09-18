@@ -1,0 +1,400 @@
+Index: src/main/resources/com/example/dinnerreserver/userprofilepage.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n\r\n<AnchorPane prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/17.0.2-ea\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.dinnerreserver.controller.UserProfileController\">\r\n   <children>\r\n      <Button layoutX=\"14.0\" layoutY=\"14.0\" mnemonicParsing=\"false\" onAction=\"#onBack\" text=\"Back\" />\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml b/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml
+--- a/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml	(revision 9eebbdecabe7114dcfd5439ecd386561f672915d)
++++ b/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml	(date 1726632619709)
+@@ -1,11 +1,35 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <?import javafx.scene.control.*?>
++<?import javafx.scene.image.*?>
+ <?import javafx.scene.layout.*?>
+-
++<?import javafx.scene.text.*?>
+ 
+ <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.UserProfileController">
+-   <children>
+-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+-   </children>
++   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
++   <Text fx:id="rating" layoutX="125.0" layoutY="240.0" textAlignment="CENTER">
++      <font>
++         <Font size="24.0" />
++      </font>
++   </Text>
++   <VBox layoutX="255.0" layoutY="120.0">
++      <Text fx:id="Username" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0">
++         <font>
++            <Font size="36.0" />
++         </font>
++      </Text>
++      <Text fx:id="Email" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0">
++         <font>
++            <Font size="18.0" />
++         </font>
++      </Text>
++      <Text fx:id="Password" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0" />
++   </VBox>
++   <Label layoutX="255.0" layoutY="27.0" text="Profile" textAlignment="CENTER">
++      <font>
++         <Font size="32.0" />
++      </font>
++   </Label>
++   <Button layoutX="271.0" layoutY="218.0" mnemonicParsing="false" text="Edit Profile" />
++   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+ </AnchorPane>
+Index: src/main/java/com/example/dinnerreserver/controller/UserProfileController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dinnerreserver.controller;\r\n\r\nimport com.example.dinnerreserver.HelloApplication;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class UserProfileController {\r\n    @FXML\r\n    private void onBack() throws IOException {\r\n        Stage stage = (Stage) Stage.getWindows().get(0);\r\n        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(\"landingpage.fxml\"));\r\n        Scene scene = new Scene(fxmlLoader.load(), 640, 400);\r\n        stage.setScene(scene);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java b/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java
+--- a/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java	(revision 9eebbdecabe7114dcfd5439ecd386561f672915d)
++++ b/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java	(date 1726646399167)
+@@ -1,19 +1,84 @@
+ package com.example.dinnerreserver.controller;
+ 
+ import com.example.dinnerreserver.HelloApplication;
++import com.example.dinnerreserver.model.SqliteUserProfileDAO;
++import com.example.dinnerreserver.model.User;
+ import javafx.fxml.FXML;
+ import javafx.fxml.FXMLLoader;
++import javafx.scene.Parent;
+ import javafx.scene.Scene;
++import javafx.scene.control.PasswordField;
++import javafx.scene.text.Text;
+ import javafx.stage.Stage;
+ 
+ import java.io.IOException;
+ 
+ public class UserProfileController {
++
++    private SqliteUserProfileDAO UserProfileDAO;
++    private User currentUser;
++    private int id;
++
+     @FXML
+     private void onBack() throws IOException {
+         Stage stage = (Stage) Stage.getWindows().get(0);
+         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
++        Parent root = loader.load();
++        UserProfileController controller = loader.getController();
++        controller.setUserId(loggedInUserId);
+         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+-        stage.setScene(scene);
++        Stage stage = new Stage();
++        stage.setScene(new Scene(root));
++        stage.show();
++    }
++    public UserProfileController() {
++        UserProfileDAO = new SqliteUserProfileDAO();
++    }
++    public void setUserId(int id) {
++        this.id = id;
++    }
++
++    @FXML
++    private Text Username;
++
++    @FXML
++    private Text email;
++
++    @FXML
++    private PasswordField password;
++
++
++    @FXML
++    public void initialize() {
++
++        currentUser = UserProfileDAO.getUserProfile(id);
++
++        if (currentUser != null) {
++            Username.setText(currentUser.getUsername());
++            email.setText(currentUser.getEmail());
++            password.setText(currentUser.getPassword());
++        }
++    }
++
++    @FXML
++    private void onSave() {
++
++        currentUser.setUsername(Username.getText());
++        currentUser.setEmail(email.getText());
++        currentUser.setPassword(password.getText());
++
++
++        UserProfileDAO.updateUserProfile(currentUser);
++
++
++        Stage stage = (Stage) Username.getScene().getWindow();
++        stage.close();
++    }
++
++    @FXML
++    private void onCancel() {
++
++        Stage stage = (Stage) Username.getScene().getWindow();
++        stage.close();
+     }
+ }
+Index: src/main/java/com/example/dinnerreserver/model/SqliteUserProfileDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/dinnerreserver/model/SqliteUserProfileDAO.java b/src/main/java/com/example/dinnerreserver/model/SqliteUserProfileDAO.java
+new file mode 100644
+--- /dev/null	(date 1726645007061)
++++ b/src/main/java/com/example/dinnerreserver/model/SqliteUserProfileDAO.java	(date 1726645007061)
+@@ -0,0 +1,68 @@
++package com.example.dinnerreserver.model;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++
++public class SqliteUserProfileDAO {
++
++    private static final String DB_URL = "jdbc:sqlite:users.db"; // Path to your database
++
++    // Establish connection to the database
++    private Connection connect() {
++        Connection conn = null;
++        try {
++            conn = DriverManager.getConnection(DB_URL);
++            System.out.println("Connection to SQLite has been established.");
++        } catch (SQLException e) {
++            System.out.println(e.getMessage());
++        }
++        return conn;
++    }
++
++    // Retrieve user profile by user ID
++    public User getUserProfile(int userId) {
++        String sql = "SELECT id, username, email, password FROM users WHERE id = ?";
++        User user = null;
++
++        try (Connection conn = this.connect();
++             PreparedStatement pstmt = conn.prepareStatement(sql)) {
++
++            pstmt.setInt(1, userId);
++            ResultSet rs = pstmt.executeQuery();
++
++            if (rs.next()) {
++                // Create a User object from the result set
++                user = new User(
++                        rs.getString("username"),
++                        rs.getString("email"),
++                        rs.getString("password")
++                );
++            }
++        } catch (SQLException e) {
++            System.out.println(e.getMessage());
++        }
++
++        return user;
++    }
++
++    // Update user profile
++    public void updateUserProfile(User user) {
++        String sql = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
++
++        try (Connection conn = this.connect();
++             PreparedStatement pstmt = conn.prepareStatement(sql)) {
++
++            pstmt.setString(1, user.getUsername());
++            pstmt.setString(2, user.getEmail());
++            pstmt.setString(3, user.getPassword());
++
++            pstmt.executeUpdate();
++            System.out.println("User profile updated successfully.");
++        } catch (SQLException e) {
++            System.out.println(e.getMessage());
++        }
++    }
++}
+\ No newline at end of file
+Index: src/main/java/com/example/dinnerreserver/model/UserProfileDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/dinnerreserver/model/UserProfileDAO.java b/src/main/java/com/example/dinnerreserver/model/UserProfileDAO.java
+new file mode 100644
+--- /dev/null	(date 1726644051980)
++++ b/src/main/java/com/example/dinnerreserver/model/UserProfileDAO.java	(date 1726644051980)
+@@ -0,0 +1,4 @@
++package com.example.dinnerreserver.model;
++
++public interface UserProfileDAO {
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"be561ebc-0c06-4a5c-a4f8-ed9ec3aae897\" name=\"Changes\" comment=\"Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/users.db\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/users.db\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;lehanden&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,\r\n    &quot;accountId&quot;: &quot;48e55497-81a2-49ea-9eb7-957e63a5da8b&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2kmITCkIJ6W3lgse7ya1aVdMiQj\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver&quot;,\r\n    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"be561ebc-0c06-4a5c-a4f8-ed9ec3aae897\" name=\"Changes\" comment=\"\" />\r\n      <created>1723882330513</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1723882330513</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"first push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1723883138658</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1723883138658</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"first push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1723885207496</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1723885207496</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"second push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1723885412853</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1723885412853</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"login push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725168467270</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725168467270</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"fixing push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1725606575707</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1725606575708</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Added RestaurantController&#10;Update Restaurant class\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726058402432</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726058402432</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Added IRestaurantDAO&#10;Added MockRestaurantDAO&#10;Added Book and Menu buttons to restaurantpage.fxml\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726059730249</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726059730249</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1726064641108</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1726064641108</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"first push\" />\r\n    <MESSAGE value=\"second push\" />\r\n    <MESSAGE value=\"login push\" />\r\n    <MESSAGE value=\"fixing push\" />\r\n    <MESSAGE value=\"Added RestaurantController&#10;Update Restaurant class\" />\r\n    <MESSAGE value=\"Added IRestaurantDAO&#10;Added MockRestaurantDAO&#10;Added Book and Menu buttons to restaurantpage.fxml\" />\r\n    <MESSAGE value=\"Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.ClassNotFoundException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/DinnerReserver$HelloApplication.ic\" NAME=\"HelloApplication Coverage Results\" MODIFIED=\"1725687864772\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"true\">\r\n      <FILTER>com.example.dinnerreserver.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9eebbdecabe7114dcfd5439ecd386561f672915d)
++++ b/.idea/workspace.xml	(date 1726643788640)
+@@ -4,10 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Set up blank User-Profile page. Linked to landingpage">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/model/SqliteUserProfileDAO.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/model/UserProfileDAO.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/users.db" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -18,6 +20,7 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
++        <option value="FxmlFile" />
+         <option value="Interface" />
+         <option value="Class" />
+       </list>
+@@ -40,7 +43,7 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,
+-    &quot;accountId&quot;: &quot;48e55497-81a2-49ea-9eb7-957e63a5da8b&quot;
++    &quot;accountId&quot;: &quot;5ba54ba8-7708-409d-8ba0-f6b131ccfc2c&quot;
+   }
+ }</component>
+   <component name="ProjectColorInfo">{
+@@ -52,25 +55,27 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver&quot;,
+-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.HelloApplication.executor": "Run",
++    "Application.Main.executor": "Run",
++    "Downloaded.Files.Path.Enabled": "true",
++    "Repository.Attach.Annotations": "false",
++    "Repository.Attach.JavaDocs": "false",
++    "Repository.Attach.Sources": "false",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "master",
++    "ignore.virus.scanning.warn.message": "true",
++    "kotlin-language-version-configured": "true",
++    "last_directory_selection": "C:/Users/darcy/IdeaProjects/TeamBcab302/src/main/java/com/example/dinnerreserver",
++    "last_opened_file_path": "C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver",
++    "onboarding.tips.debug.path": "C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java",
++    "project.structure.last.edited": "Libraries",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "preferences.JavaFX"
+   }
+-}</component>
++}]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -144,9 +149,44 @@
+       <option name="project" value="LOCAL" />
+       <updated>1726064641108</updated>
+     </task>
+-    <option name="localTasksCounter" value="9" />
++    <task id="LOCAL-00009" summary="Added basic Browse Page, linked to landingpage by test button">
++      <option name="closed" value="true" />
++      <created>1726398733416</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1726398733416</updated>
++    </task>
++    <task id="LOCAL-00010" summary="Added back button to Restaurant page for increased functionality">
++      <option name="closed" value="true" />
++      <created>1726399089411</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1726399089411</updated>
++    </task>
++    <task id="LOCAL-00011" summary="Set up blank User-Profile page. Linked to landingpage">
++      <option name="closed" value="true" />
++      <created>1726471913636</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1726471913637</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="first push" />
+     <MESSAGE value="second push" />
+@@ -154,8 +194,12 @@
+     <MESSAGE value="fixing push" />
+     <MESSAGE value="Added RestaurantController&#10;Update Restaurant class" />
+     <MESSAGE value="Added IRestaurantDAO&#10;Added MockRestaurantDAO&#10;Added Book and Menu buttons to restaurantpage.fxml" />
++    <MESSAGE value="Fixed warnings" />
+     <MESSAGE value="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Removed MockRestaurantDAO and added MockRestaurant data to RestaurantController&#10;Updated restaurantpage.fxml" />
++    <MESSAGE value="Added basic Browse Page, linked to landingpage by test button" />
++    <MESSAGE value="Added back button to Restaurant page for increased functionality" />
++    <MESSAGE value="Set up blank User-Profile page. Linked to landingpage" />
++    <option name="LAST_COMMIT_MESSAGE" value="Set up blank User-Profile page. Linked to landingpage" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+@@ -166,6 +210,11 @@
+         </breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
++    <watches-manager>
++      <configuration name="Application">
++        <watch expression="ClassNotFoundException1976_DebugLabel" />
++      </configuration>
++    </watches-manager>
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/DinnerReserver$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1725687864772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
