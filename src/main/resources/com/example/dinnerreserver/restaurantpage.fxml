@@ -10,10 +10,26 @@
         <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="34.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
             <Image url="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
         </ImageView>
-        <!-- Rating will be turned into stars later, just wanted proof that I can set it with a variable -->
-        <Text fx:id="rating" layoutX="125.0" layoutY="240.0" textAlignment="CENTER">
+        <HBox layoutX="67" layoutY="205.0">
+            <ImageView fx:id="star1" fitHeight="30" fitWidth="30" visible="false">
+                <Image url="@Star.png" />
+            </ImageView>
+            <ImageView fx:id="star2" fitHeight="30" fitWidth="30" visible="false">
+                <Image url="@Star.png" />
+            </ImageView>
+            <ImageView fx:id="star3" fitHeight="30" fitWidth="30" visible="false">
+                <Image url="@Star.png" />
+            </ImageView>
+            <ImageView fx:id="star4" fitHeight="30" fitWidth="30" visible="false">
+                <Image url="@Star.png" />
+            </ImageView>
+            <ImageView fx:id="star5" fitHeight="30" fitWidth="30" visible="false">
+                <Image url="@Star.png" />
+            </ImageView>
+        </HBox>
+        <Text fx:id="rating" layoutX="125.0" layoutY="255.0" textAlignment="CENTER">
             <font>
-                <Font size="24.0" />
+                <Font size="16.0" />
             </font>
         </Text>
         <VBox layoutX="260.0" layoutY="49.0">
@@ -34,3 +50,4 @@
       <Button layoutX="8.0" layoutY="8.0" onAction="#onBack" mnemonicParsing="false" text="Back" />
     </AnchorPane>
 </VBox>
+
