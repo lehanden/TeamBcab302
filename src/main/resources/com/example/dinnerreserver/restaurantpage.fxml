@@ -43,7 +43,7 @@
             </Text>
             <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0" />
         </VBox>
-         <Button layoutX="340.0" layoutY="230.0" mnemonicParsing="false" text="Book" />
+         <Button layoutX="340.0" layoutY="230.0" mnemonicParsing="false" text="Book" onAction="#onForward"/>
          <Button layoutX="440.0" layoutY="230.0" mnemonicParsing="false" text="Menu" />
       <Button layoutX="8.0" layoutY="8.0" onAction="#onBack" mnemonicParsing="false" text="Back" />
     </AnchorPane>

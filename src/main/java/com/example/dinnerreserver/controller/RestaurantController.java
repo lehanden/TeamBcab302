@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 public class RestaurantController {
 
@@ -50,12 +51,11 @@ public class RestaurantController {
     }
 
     @FXML
-    public void selectRestaurant(Integer restaurantId) throws FileNotFoundException {
+    public Restaurant selectRestaurant(Integer restaurantId) throws FileNotFoundException
+    {
         Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
-
         Float restaurantRating = restaurant.getRating();
         String rating_score = STR."\{restaurantRating.toString()} / 5";
-
         name.setText(restaurant.getName());
         address.setText(restaurant.getAddress());
         description.setText(restaurant.getDescription());
@@ -87,12 +87,22 @@ public class RestaurantController {
         } else if(restaurantRating > 0.4) {
             star1.setVisible(true);
         }
+
+        return restaurant;
     }
 
     @FXML
     private void onBack() throws IOException{
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    private void onForward() throws IOException{
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }

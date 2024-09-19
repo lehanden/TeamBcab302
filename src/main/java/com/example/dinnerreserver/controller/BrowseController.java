@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -41,6 +42,7 @@ public class BrowseController {
 
     @FXML
     private void onBack() throws IOException {
+        showAlert("Log Out", "You have been successfully logged out.");
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
@@ -116,13 +118,17 @@ public class BrowseController {
     private void openRestaurantPage(int restaurantId) throws IOException {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("restaurantpage.fxml"));
         Scene scene = new Scene(loader.load(), 640, 400);
-
-        // Get the controller and set the restaurant ID
         RestaurantController controller = loader.getController();
         controller.selectRestaurant(restaurantId);
-
-        // Set the new scene
         Stage stage = (Stage) Stage.getWindows().get(0);
         stage.setScene(scene);
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

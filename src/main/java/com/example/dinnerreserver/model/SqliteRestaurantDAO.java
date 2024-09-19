@@ -101,6 +101,11 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     }
 
     @Override
+    public void updateRestaurant(Restaurant restaurant) {
+
+    }
+
+    @Override
     public Restaurant getRestaurant(int id) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM restaurants WHERE id = ?");

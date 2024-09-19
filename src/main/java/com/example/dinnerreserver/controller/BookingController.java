@@ -1,14 +1,25 @@
 package com.example.dinnerreserver.controller;
 
+import com.example.dinnerreserver.HelloApplication;
+import com.example.dinnerreserver.model.Restaurant;
+import com.example.dinnerreserver.model.SqliteConnection;
 import com.example.dinnerreserver.model.SqliteRestaurantDAO;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class BookingController {
+
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label address;
 
     @FXML
     private TextField peopleTextField;
@@ -16,11 +27,20 @@ public class BookingController {
     @FXML
     private ComboBox<String> timeComboBox;
 
-    @FXML
-    private Button bookButton;
+    private SqliteRestaurantDAO restaurantDAO;
 
-    @FXML
-    private Button cancelButton;
+    public BookingController() {
+        restaurantDAO = new SqliteRestaurantDAO();
+    }
+
+    //@FXML
+    //public void selectRestaurant(Integer restaurantId)
+    //{
+       // Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
+     //   name.setText(restaurants.getName());
+        //address.setText(restaurants.getAddress());
+    //}
+
 
     @FXML
     public void initialize() {
@@ -28,8 +48,16 @@ public class BookingController {
         timeComboBox.getSelectionModel().selectFirst(); // Select the first time option
     }
 
+
+    //@FXML
+    //private void onBack() throws IOException {
+       // Stage stage = (Stage) Stage.getWindows().get(0);
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("restaurantpage.fxml"));
+        //Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        //stage.setScene(scene);
+
     @FXML
-    private void onBookButton() {
+    private void onBookButton() throws IOException{
         // Get user inputs
         String numberOfPeople = peopleTextField.getText();
         String selectedTime = timeComboBox.getValue();
@@ -54,15 +82,24 @@ public class BookingController {
 
         // If all inputs are valid, you can now proceed with booking
         showAlert("Success", "Table booked for " + peopleCount + " people at " + selectedTime + ".");
-        // Add booking logic here (e.g., saving the booking details)
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
     }
+        // Add booking logic here (e.g., saving the booking details)
+
 
     @FXML
-    private void onCancelButton() {
+    private void onCancelButton() throws IOException{
         // Clear the form fields or return to the previous page
         peopleTextField.clear();
         timeComboBox.getSelectionModel().selectFirst(); // Reset time selection to default
         showAlert("Cancelled", "Booking process has been cancelled.");
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
     }
 
     // Utility function to display alert messages
@@ -74,3 +111,5 @@ public class BookingController {
         alert.showAndWait();
     }
 }
+
+

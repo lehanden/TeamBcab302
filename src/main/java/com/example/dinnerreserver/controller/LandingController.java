@@ -59,12 +59,12 @@ public class LandingController {
         userprofileController.selectUser(1);
         stage.setScene(scene);
     }
-    public void onBookingPageButton() throws IOException
-    {
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        BookingController bookingController = fxmlLoader.getController();
-        stage.setScene(scene);
-    }
+    //public void onBookingPageButton() throws IOException
+    //{
+      //  Stage stage = (Stage) Stage.getWindows().get(0);
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
+        //Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        //BookingController bookingController = fxmlLoader.getController();
+        //stage.setScene(scene);
+    //}
 }
