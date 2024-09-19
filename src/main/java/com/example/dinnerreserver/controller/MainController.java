@@ -45,6 +45,10 @@ public class MainController {
             clearCreateAccountFields();
             //System.out.println("Creation Successful! Welcome "+ username);
             showAlert(AlertType.INFORMATION, "Creation Successful", "Account Created, welcome " + username + ".");
+
+            // store to manager
+            SessionManager.getInstance().setLoggedInUser(newUser);
+
             onForward();
         }
         else{
@@ -62,6 +66,10 @@ public class MainController {
             // Login successful
             //System.out.println("Log In Successful!");
             showAlert(AlertType.INFORMATION, "Log in Successful", "Welcome "+ username + ".");
+
+            // store to manager
+            SessionManager.getInstance().setLoggedInUser(user);
+
             onForward();
         } else {
             //System.out.println("Log in Unsuccessful");

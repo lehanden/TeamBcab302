@@ -21,7 +21,7 @@ public class SqliteBookingDAO implements IBookingDAO {
                     + "user_id INTEGER NOT NULL,"
                     + "restaurant_id INTEGER NOT NULL,"
                     + "number_of_people INTEGER NOT NULL,"
-                    + "booking_time TEXT NOT NULL"
+                    + "booking_time FLOAT NOT NULL"
                     + ")";
             statement.execute(query);
         } catch (Exception e) {
@@ -29,6 +29,8 @@ public class SqliteBookingDAO implements IBookingDAO {
         }
     }
 
+
+    // todo
     @Override
     public void addBooking(Booking booking) {
         String sql = "INSERT INTO bookings(user_id, restaurant_id, number_of_people, booking_time) VALUES(?, ?, ?, ?)";
@@ -38,7 +40,7 @@ public class SqliteBookingDAO implements IBookingDAO {
             pstmt.setInt(1, booking.getUserId());
             pstmt.setInt(2, booking.getRestaurantId());
             pstmt.setInt(3, booking.getNumberOfPeople());
-            pstmt.setString(4, booking.getBookingTime());
+            //pstmt.setfloat(4, booking.getBookingTime());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
