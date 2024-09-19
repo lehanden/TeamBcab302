@@ -7,7 +7,8 @@ public class Restaurant {
     private String description;
     private Float rating;
 
-    public Restaurant(String name, String address, String description, Float rating) {
+    public Restaurant(Integer id, String name, String address, String description, Float rating) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.address = address;

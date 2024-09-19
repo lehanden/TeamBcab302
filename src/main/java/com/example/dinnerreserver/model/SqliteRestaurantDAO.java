@@ -63,7 +63,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     @Override
     public void addRestaurant(Restaurant restaurant) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO restaurant (name, address, description, rating) VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO restaurants (name, address, description, rating) VALUES (?, ?, ?, ?)");
             statement.setString(1, restaurant.getName());
             statement.setString(2, restaurant.getAddress());
             statement.setString(3, restaurant.getDescription());
@@ -81,7 +81,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     @Override
     public void deleteRestaurant(Restaurant restaurant) {
         try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM restaurant WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM restaurants WHERE id = ?");
             statement.setInt(1, restaurant.getId());
             statement.executeUpdate();
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                 String address = resultSet.getString("address");
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
-                Restaurant restaurant = new Restaurant(name, address, description, rating);
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating);
                 restaurant.setId(id);
                 return restaurant;
             }
@@ -123,7 +123,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                 String address = resultSet.getString("address");
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
-                Restaurant restaurant = new Restaurant(name, address, description, rating);
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating);
                 restaurant.setId(id);
                 restaurants.add(restaurant);
             }

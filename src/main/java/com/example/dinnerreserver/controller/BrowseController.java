@@ -63,7 +63,7 @@ public class BrowseController {
                 String description = rs.getString("description");
                 Float rating = rs.getFloat("rating");
 
-                Restaurant restaurant = new Restaurant(name, address, description, rating); // Create a Restaurant object
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating); // Create a Restaurant object
                 restaurantList.add(restaurant); // Add the restaurant to the list
             }
 
