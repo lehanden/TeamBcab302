@@ -16,7 +16,7 @@ public class UserProfileController {
     SqliteUserDAO UserProfileDAO;
 
     @FXML
-    private void onBack() throws IOException{
+    private void onBack() throws IOException {
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
@@ -37,12 +37,10 @@ public class UserProfileController {
     private PasswordField password;
 
     @FXML
-    public void selectUser(Integer userId)
-    {
+    public void selectUser(Integer userId) {
         User user = UserProfileDAO.getUser(userId);
         username.setText(user.getUsername());
         email.setText(user.getEmail());
         password.setText(user.getPassword());
     }
-
 }

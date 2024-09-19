@@ -47,6 +47,16 @@ public class BrowseController {
         stage.setScene(scene);
     }
 
+    @FXML
+    private void onProfileButton() throws IOException{
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        UserProfileController userprofileController = fxmlLoader.getController();
+        userprofileController.selectUser(1);
+        stage.setScene(scene);
+    }
+
     // Load restaurants from the database
     private void loadRestaurantsFromDB() {
         String url = "jdbc:sqlite:SBEats.db"; // Path to your SQLite database
@@ -115,4 +125,5 @@ public class BrowseController {
         Stage stage = (Stage) Stage.getWindows().get(0);
         stage.setScene(scene);
     }
+
 }
