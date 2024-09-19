@@ -46,12 +46,12 @@ public class RestaurantController {
     @FXML
     public void selectRestaurant(Integer restaurantId)
     {
-        Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
-        Float restaurantRating = restaurant.getRating();
+        Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
+        Float restaurantRating = restaurants.getRating();
         String rating_score = STR."\{restaurantRating.toString()} / 5";
-        name.setText(restaurant.getName());
-        address.setText(restaurant.getAddress());
-        description.setText(restaurant.getDescription());
+        name.setText(restaurants.getName());
+        address.setText(restaurants.getAddress());
+        description.setText(restaurants.getDescription());
         rating.setText(rating_score);
 
         if(restaurantRating > 4.4) {
@@ -80,7 +80,7 @@ public class RestaurantController {
     @FXML
     private void onBack() throws IOException{
         Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }
