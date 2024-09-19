@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Pls fix v3">
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Set up profile button on browse page">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/Bookings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BrowseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BrowseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/RestaurantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/UserProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/bookingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/bookingpage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/browsepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/browsepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/restaurantpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/restaurantpage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,8 +47,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302&quot;,
-    &quot;accountId&quot;: &quot;2969fdf4-993d-4a7b-9d79-c70a9ca4e23f&quot;
+    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,
+    &quot;accountId&quot;: &quot;5ba54ba8-7708-409d-8ba0-f6b131ccfc2c&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -65,10 +75,10 @@
     "last_directory_selection": "C:/Users/darcy/IdeaProjects/TeamBcab302/src/main/java/com/example/dinnerreserver",
     "last_opened_file_path": "C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver",
     "onboarding.tips.debug.path": "C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
   <component name="RunManager">
@@ -188,13 +198,13 @@
       <option name="project" value="LOCAL" />
       <updated>1726471913637</updated>
     </task>
-    <task id="LOCAL-00012" summary="Pls fix v3">
+    <task id="LOCAL-00012" summary="Set up profile button on browse page">
       <option name="closed" value="true" />
-      <created>1726735218575</created>
+      <created>1726732196172</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1726735218575</updated>
+      <updated>1726732196172</updated>
     </task>
     <option name="localTasksCounter" value="13" />
     <servers />
@@ -222,8 +232,8 @@
     <MESSAGE value="Added basic Browse Page, linked to landingpage by test button" />
     <MESSAGE value="Added back button to Restaurant page for increased functionality" />
     <MESSAGE value="Set up blank User-Profile page. Linked to landingpage" />
-    <MESSAGE value="Pls fix v3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pls fix v3" />
+    <MESSAGE value="Set up profile button on browse page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set up profile button on browse page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

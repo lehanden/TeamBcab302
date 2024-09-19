@@ -11,12 +11,12 @@
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="50.0" layoutY="30.0" text="Restaurant Name">
+            <Label fx:id="name" layoutX="50.0" layoutY="30.0">
                <font>
                   <Font size="24.0"/>
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="60.0" text="Restaurant Address">
+            <Label fx:id="address" layoutX="50.0" layoutY="60.0">
                <font>
                   <Font size="14.0"/>
                </font>
