@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RestaurantController {
 
@@ -44,7 +45,7 @@ public class RestaurantController {
     }
 
     @FXML
-    public void selectRestaurant(Integer restaurantId)
+    public Restaurant selectRestaurant(Integer restaurantId)
     {
         Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
         Float restaurantRating = restaurants.getRating();
@@ -75,6 +76,8 @@ public class RestaurantController {
         } else if(restaurantRating > 0.4) {
             star1.setVisible(true);
         }
+
+        return restaurants;
     }
 
     @FXML
