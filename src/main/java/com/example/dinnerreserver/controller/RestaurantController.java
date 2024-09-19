@@ -87,4 +87,12 @@ public class RestaurantController {
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }
+
+    @FXML
+    private void onForward() throws IOException{
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
 }
