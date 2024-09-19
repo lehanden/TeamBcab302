@@ -59,7 +59,7 @@ public class BrowseController {
     // Load restaurants from the database
     private void loadRestaurantsFromDB() {
         String url = "jdbc:sqlite:SBEats.db"; // Path to your SQLite database
-        String query = "SELECT id, name, address, description, rating FROM restaurants"; // SQL query to get restaurant data
+        String query = "SELECT id, name, address, description, rating, imageSource FROM restaurants"; // SQL query to get restaurant data
 
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -71,8 +71,9 @@ public class BrowseController {
                 String address = rs.getString("address");
                 String description = rs.getString("description");
                 Float rating = rs.getFloat("rating");
+                String imageSource = rs.getString("imageSource");
 
-                Restaurant restaurant = new Restaurant(id, name, address, description, rating); // Create a Restaurant object
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource); // Create a Restaurant object
                 restaurantList.add(restaurant); // Add the restaurant to the list
             }
 

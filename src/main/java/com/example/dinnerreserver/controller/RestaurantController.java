@@ -5,15 +5,21 @@ import com.example.dinnerreserver.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class RestaurantController {
 
     SqliteRestaurantDAO restaurantDAO;
+
+    @FXML
+    private ImageView restaurantImage;
 
     @FXML
     private Text name;
@@ -44,15 +50,21 @@ public class RestaurantController {
     }
 
     @FXML
-    public void selectRestaurant(Integer restaurantId)
-    {
+    public void selectRestaurant(Integer restaurantId) throws FileNotFoundException {
         Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
+
         Float restaurantRating = restaurants.getRating();
         String rating_score = STR."\{restaurantRating.toString()} / 5";
+
         name.setText(restaurants.getName());
         address.setText(restaurants.getAddress());
         description.setText(restaurants.getDescription());
         rating.setText(rating_score);
+
+        String imageSource = restaurants.getImageSource();
+        Image restaurantImage = new Image(new FileInputStream(STR."./src/main/resources/com/example/dinnerreserver/\{imageSource}"));
+
+        this.restaurantImage.setImage(restaurantImage);
 
         if(restaurantRating > 4.4) {
             star1.setVisible(true);
