@@ -5,16 +5,22 @@ import com.example.dinnerreserver.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 public class RestaurantController {
 
     SqliteRestaurantDAO restaurantDAO;
+
+    @FXML
+    private ImageView restaurantImage;
 
     @FXML
     private Text name;
@@ -45,15 +51,20 @@ public class RestaurantController {
     }
 
     @FXML
-    public Restaurant selectRestaurant(Integer restaurantId)
+    public Restaurant selectRestaurant(Integer restaurantId) throws FileNotFoundException
     {
-        Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
-        Float restaurantRating = restaurants.getRating();
+        Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
+        Float restaurantRating = restaurant.getRating();
         String rating_score = STR."\{restaurantRating.toString()} / 5";
-        name.setText(restaurants.getName());
-        address.setText(restaurants.getAddress());
-        description.setText(restaurants.getDescription());
+        name.setText(restaurant.getName());
+        address.setText(restaurant.getAddress());
+        description.setText(restaurant.getDescription());
         rating.setText(rating_score);
+
+        String imageSource = restaurant.getImageSource();
+        Image restaurantImageSource = new Image(new FileInputStream(STR."./src/main/resources/com/example/dinnerreserver/\{imageSource}"));
+
+        restaurantImage.setImage(restaurantImageSource);
 
         if(restaurantRating > 4.4) {
             star1.setVisible(true);
@@ -77,9 +88,8 @@ public class RestaurantController {
             star1.setVisible(true);
         }
 
-
-        SharedData.getInstance().setSelectedRestaurant(restaurants);
-        return restaurants;
+        SharedData.getInstance().setSelectedRestaurant(restaurant);
+        return restaurant;
     }
 
     @FXML
