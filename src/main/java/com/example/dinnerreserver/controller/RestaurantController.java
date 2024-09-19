@@ -51,20 +51,20 @@ public class RestaurantController {
 
     @FXML
     public void selectRestaurant(Integer restaurantId) throws FileNotFoundException {
-        Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
+        Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
 
-        Float restaurantRating = restaurants.getRating();
+        Float restaurantRating = restaurant.getRating();
         String rating_score = STR."\{restaurantRating.toString()} / 5";
 
-        name.setText(restaurants.getName());
-        address.setText(restaurants.getAddress());
-        description.setText(restaurants.getDescription());
+        name.setText(restaurant.getName());
+        address.setText(restaurant.getAddress());
+        description.setText(restaurant.getDescription());
         rating.setText(rating_score);
 
-        String imageSource = restaurants.getImageSource();
-        Image restaurantImage = new Image(new FileInputStream(STR."./src/main/resources/com/example/dinnerreserver/\{imageSource}"));
+        String imageSource = restaurant.getImageSource();
+        Image restaurantImageSource = new Image(new FileInputStream(STR."./src/main/resources/com/example/dinnerreserver/\{imageSource}"));
 
-        this.restaurantImage.setImage(restaurantImage);
+        restaurantImage.setImage(restaurantImageSource);
 
         if(restaurantRating > 4.4) {
             star1.setVisible(true);

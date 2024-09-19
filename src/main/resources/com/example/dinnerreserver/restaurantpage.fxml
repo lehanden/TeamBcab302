@@ -7,9 +7,7 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.RestaurantController">
     <AnchorPane prefHeight="362.0" prefWidth="644.0" VBox.vgrow="ALWAYS">
-        <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="34.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
-        </ImageView>
+        <ImageView fx:id="restaurantImage" fitHeight="150.0" fitWidth="216.0" layoutX="34.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
         <HBox layoutX="67" layoutY="205.0">
             <ImageView fx:id="star1" fitHeight="30" fitWidth="30" visible="false">
                 <Image url="@Star.png" />

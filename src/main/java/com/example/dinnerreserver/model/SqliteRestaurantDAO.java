@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SqliteRestaurantDAO implements IRestaurantDAO {
 
@@ -14,12 +15,16 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     public SqliteRestaurantDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
+        insertSampleData();
     }
 
     private void createTable() {
         try {
-            Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS restaurants ("
+            Statement delete = connection.createStatement();
+            String deleteQuery = "DROP TABLE IF EXISTS restaurants";
+            delete.execute(deleteQuery);
+            Statement create = connection.createStatement();
+            String createQuery = "CREATE TABLE IF NOT EXISTS restaurants ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "name VARCHAR NOT NULL,"
                     + "address VARCHAR NOT NULL,"
@@ -27,15 +32,16 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                     + "rating FLOAT NOT NULL,"
                     + "imageSource VARCHAR NOT NULL"
                     + ")";
-            statement.execute(query);
+            create.execute(createQuery);
         } catch (Exception e) {
-            e.printStackTrace();
+            if (!Objects.equals(e.getMessage(), "[SQLITE_LOCKED]  A table in the database is locked (database table is locked)")) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void insertSampleData() {
         try {
-
             Statement checkStatement = connection.createStatement();
             ResultSet resultSet = checkStatement.executeQuery("SELECT COUNT(*) FROM restaurants");
             if (resultSet.next() && resultSet.getInt(1) == 0) {
@@ -46,17 +52,17 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                         "'164 Grey St, South Brisbane', " +
                         "'Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating.', " +
                         "3.0," +
-                        "'/Restaurant1.jpg'),"
+                        "'Restaurant1.jpg'),"
                     + "('Olé Restaurant', " +
                         "'Shop/B12 Little Stanley St, South Brisbane', " +
                         "'Vibrant Spanish eatery with tapas, sangria bar and stylish decor, plus an intricate wooden ceiling.', " +
                         "4.2," +
-                        "'/Restaurant2.jpeg'),"
+                        "'Restaurant2.jpeg'),"
                     + "('Geláre South Bank', " +
                         "'3/164 Grey St, South Brisbane QLD 4101', " +
                         "'Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.', " +
                         "3.9," +
-                        "'/Restaurant3.jpg')";
+                        "'Restaurant3.jpg')";
                 insertStatement.execute(insertQuery);
             }
         } catch (Exception e) {
