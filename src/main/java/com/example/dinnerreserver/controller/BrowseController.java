@@ -25,6 +25,8 @@ import java.util.ArrayList;
 
 public class BrowseController {
 
+    SqliteRestaurantDAO restaurantDAO;
+
     @FXML
     private ScrollPane scrollPane;
 
@@ -36,6 +38,7 @@ public class BrowseController {
 
     @FXML
     public void initialize() {
+        restaurantDAO = new SqliteRestaurantDAO();
         loadRestaurantsFromDB();
         populateRestaurantUI();
     }
