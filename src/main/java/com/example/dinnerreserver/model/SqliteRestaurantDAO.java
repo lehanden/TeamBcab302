@@ -61,17 +61,17 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     }
 
     @Override
-    public void addRestaurant(Restaurant restaurant) {
+    public void addRestaurant(Restaurant restaurants) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO restaurant (name, address, description, rating) VALUES (?, ?, ?, ?)");
-            statement.setString(1, restaurant.getName());
-            statement.setString(2, restaurant.getAddress());
-            statement.setString(3, restaurant.getDescription());
-            statement.setString(4, restaurant.getRating().toString());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO restaurants (name, address, description, rating) VALUES (?, ?, ?, ?)");
+            statement.setString(1, restaurants.getName());
+            statement.setString(2, restaurants.getAddress());
+            statement.setString(3, restaurants.getDescription());
+            statement.setString(4, restaurants.getRating().toString());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
-                restaurant.setId(generatedKeys.getInt(1));
+                restaurants.setId(generatedKeys.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,10 +79,10 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     }
 
     @Override
-    public void deleteRestaurant(Restaurant restaurant) {
+    public void deleteRestaurant(Restaurant restaurants) {
         try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM restaurant WHERE id = ?");
-            statement.setInt(1, restaurant.getId());
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM restaurants WHERE id = ?");
+            statement.setInt(1, restaurants.getId());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +100,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                 String address = resultSet.getString("address");
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
-                Restaurant restaurant = new Restaurant(name, address, description, rating);
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating);
                 restaurant.setId(id);
                 return restaurant;
             }
@@ -123,7 +123,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                 String address = resultSet.getString("address");
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
-                Restaurant restaurant = new Restaurant(name, address, description, rating);
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating);
                 restaurant.setId(id);
                 restaurants.add(restaurant);
             }

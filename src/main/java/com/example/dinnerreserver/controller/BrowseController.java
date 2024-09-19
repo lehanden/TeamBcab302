@@ -46,6 +46,15 @@ public class BrowseController {
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }
+    @FXML
+    private void onProfileButton() throws IOException{
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        UserProfileController userprofileController = fxmlLoader.getController();
+        userprofileController.selectUser(1);
+        stage.setScene(scene);
+    }
 
     // Load restaurants from the database
     private void loadRestaurantsFromDB() {
@@ -63,7 +72,7 @@ public class BrowseController {
                 String description = rs.getString("description");
                 Float rating = rs.getFloat("rating");
 
-                Restaurant restaurant = new Restaurant(name, address, description, rating); // Create a Restaurant object
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating); // Create a Restaurant object
                 restaurantList.add(restaurant); // Add the restaurant to the list
             }
 
