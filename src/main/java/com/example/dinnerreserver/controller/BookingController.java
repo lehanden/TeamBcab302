@@ -1,9 +1,7 @@
 package com.example.dinnerreserver.controller;
 
 import com.example.dinnerreserver.HelloApplication;
-import com.example.dinnerreserver.model.Restaurant;
-import com.example.dinnerreserver.model.SqliteConnection;
-import com.example.dinnerreserver.model.SqliteRestaurantDAO;
+import com.example.dinnerreserver.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +10,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BookingController {
 
@@ -33,21 +33,26 @@ public class BookingController {
         restaurantDAO = new SqliteRestaurantDAO();
     }
 
-    //@FXML
-    //public void selectRestaurant(Integer restaurantId)
-    //{
-       // Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
-     //   name.setText(restaurants.getName());
-        //address.setText(restaurants.getAddress());
-    //}
 
 
     @FXML
     public void initialize() {
+        Restaurant selectedRestaurant = SharedData.getInstance().getSelectedRestaurant();
+
+        if (selectedRestaurant != null) {
+            name.setText(selectedRestaurant.getName());
+            address.setText(selectedRestaurant.getAddress());
+        }
         // Initialize default values, if necessary
         timeComboBox.getSelectionModel().selectFirst(); // Select the first time option
     }
 
+    public void setRestaurant(Restaurant restaurant) {
+        if (restaurant != null) {
+            name.setText(restaurant.getName());
+            address.setText(restaurant.getAddress());
+        }
+    }
 
     //@FXML
     //private void onBack() throws IOException {
@@ -80,6 +85,7 @@ public class BookingController {
             return;
         }
 
+
         // If all inputs are valid, you can now proceed with booking
         showAlert("Success", "Table booked for " + peopleCount + " people at " + selectedTime + ".");
         Stage stage = (Stage) Stage.getWindows().get(0);
@@ -87,7 +93,7 @@ public class BookingController {
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }
-        // Add booking logic here (e.g., saving the booking details)
+
 
 
     @FXML
