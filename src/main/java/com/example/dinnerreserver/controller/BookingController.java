@@ -33,13 +33,13 @@ public class BookingController {
         restaurantDAO = new SqliteRestaurantDAO();
     }
 
-    @FXML
-    public void selectRestaurant(Integer restaurantId)
-    {
-        Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
-        name.setText(restaurants.getName());
-        address.setText(restaurants.getAddress());
-    }
+    //@FXML
+    //public void selectRestaurant(Integer restaurantId)
+    //{
+       // Restaurant restaurants = restaurantDAO.getRestaurant(restaurantId);
+     //   name.setText(restaurants.getName());
+        //address.setText(restaurants.getAddress());
+    //}
 
 
     @FXML
