@@ -77,6 +77,8 @@ public class RestaurantController {
             star1.setVisible(true);
         }
 
+
+        SharedData.getInstance().setSelectedRestaurant(restaurants);
         return restaurants;
     }
 
@@ -90,9 +92,11 @@ public class RestaurantController {
 
     @FXML
     private void onForward() throws IOException{
-        Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
+        Stage stage = (Stage) Stage.getWindows().get(0);
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        BookingController controller = fxmlLoader.getController();
+        controller.setRestaurant(SharedData.getInstance().getSelectedRestaurant());
         stage.setScene(scene);
     }
 }
