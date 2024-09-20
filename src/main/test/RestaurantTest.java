@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RestaurantTest {
     private RestaurantManager restaurantManager;
     private Restaurant[] restaurants = {
-            new Restaurant(1, "San Kai Japanese Restaurant", "164 Grey St, South Brisbane", "Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating.", 3.0F),
-            new Restaurant(2, "Olé Restaurant", "Shop/B12 Little Stanley St, South Brisbane", "Vibrant Spanish eatery with tapas, sangria bar and stylish decor, plus an intricate wooden ceiling.", 4.2F),
-            new Restaurant(3, "Geláre South Bank", "3/164 Grey St, South Brisbane QLD 4101", "Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.", 3.9F)
+            new Restaurant(1, "San Kai Japanese Restaurant", "164 Grey St, South Brisbane", "Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating.", 3.0F, "Restaurant1.jpg"),
+            new Restaurant(2, "Olé Restaurant", "Shop/B12 Little Stanley St, South Brisbane", "Vibrant Spanish eatery with tapas, sangria bar and stylish decor, plus an intricate wooden ceiling.", 4.2F, "Restaurant2.jpeg"),
+            new Restaurant(3, "Geláre South Bank", "3/164 Grey St, South Brisbane QLD 4101", "Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.", 3.9F, "Restaurant3.jpg")
     };
 
 
