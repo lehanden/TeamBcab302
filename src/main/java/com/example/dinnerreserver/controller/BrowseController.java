@@ -35,9 +35,13 @@ public class BrowseController {
 
     private List<Restaurant> restaurantList = new ArrayList<>();
 
+    public User loggedInUser;
+
+
 
     @FXML
     public void initialize() {
+        loggedInUser = MainController.loggedInUser;
         restaurantDAO = new SqliteRestaurantDAO();
         loadRestaurantsFromDB();
         populateRestaurantUI();
@@ -52,13 +56,20 @@ public class BrowseController {
         stage.setScene(scene);
     }
     @FXML
-    private void onProfileButton() throws IOException{
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        UserProfileController userprofileController = fxmlLoader.getController();
-        userprofileController.selectUser(1);
-        stage.setScene(scene);
+    private void onProfile() throws IOException {
+        if (loggedInUser != null) {
+
+            Stage stage = (Stage) Stage.getWindows().get(0);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+            UserProfileController userProfileController = fxmlLoader.getController();
+            userProfileController.setLoggedInUser(loggedInUser);
+            stage.setScene(scene);
+        }
+        else {
+            // testing a user is logged in
+            System.out.println("No user is logged in.");
+        }
     }
 
     // Load restaurants from the database
@@ -133,5 +144,14 @@ public class BrowseController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+        if (loggedInUser != null) {
+            System.out.println("Logged in user: " + loggedInUser.getUsername());
+        } else {
+            System.out.println("No user is logged in.");
+        }
     }
 }

@@ -7,16 +7,23 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.UserProfileController">
    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
-   <VBox layoutX="255.0" layoutY="120.0">
-   <Text text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-   <Text fx:id="username" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-   <Text text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-   <Text fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+   <VBox layoutX="150.0" layoutY="80.0" spacing="10.0" alignment="CENTER_LEFT">
+      <HBox spacing="10.0">
+         <Text text="Username:" />
+         <Text fx:id="username" />
+      </HBox>
 
-   <Text text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-   <PasswordField fx:id="password" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+      <HBox spacing="10.0">
+         <Text text="Email:" />
+         <Text fx:id="email" />
+      </HBox>
 
-   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox spacing="10.0">
+         <Text text="Password:" />
+         <PasswordField fx:id="password" />
+      </HBox>
+
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    </VBox>
 </AnchorPane>
