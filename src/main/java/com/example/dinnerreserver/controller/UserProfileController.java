@@ -29,13 +29,13 @@ public class UserProfileController {
         UserProfileDAO = new SqliteUserDAO();
     }
 
-    // Method to receive the logged-in user
+    // logged-in user
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;
         displayUserDetails();
     }
 
-    // Method to display the user details on the FXML
+
     private void displayUserDetails() {
         if (loggedInUser != null) {
             username.setText(loggedInUser.getUsername());

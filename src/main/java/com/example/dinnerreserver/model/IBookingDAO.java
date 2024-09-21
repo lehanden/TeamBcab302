@@ -5,7 +5,6 @@ import java.util.List;
 public interface IBookingDAO {
     public void addBooking(Booking booking);
 
-
     public void deleteBooking(Booking booking);
 
     public void updateBooking(Booking booking);

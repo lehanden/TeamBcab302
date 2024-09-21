@@ -94,7 +94,7 @@ public class BrowseController {
             }
 
         } catch (Exception e) {
-            e.printStackTrace(); // Print any exceptions that occur during database access
+            e.printStackTrace();
         }
     }
 
@@ -108,7 +108,7 @@ public class BrowseController {
             Label descriptionLabel = new Label("Description: " + restaurant.getDescription());
             Label ratingLabel = new Label("Rating: " + restaurant.getRating());
 
-            // Create a "View" button for each restaurant
+            // Create a view button for each restaurant
             Button viewButton = new Button("View");
             viewButton.setOnAction(event -> {
                 try {

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import com.example.dinnerreserver.model.Restaurant;
 
 public class BookingController {
 
@@ -29,25 +30,33 @@ public class BookingController {
 
     private SqliteRestaurantDAO restaurantDAO;
 
+    private IBookingDAO bookingDAO;
+    private User loggedInUser;
+    private Restaurant selectedRestaurant;
+
     public BookingController() {
+
         restaurantDAO = new SqliteRestaurantDAO();
+        bookingDAO = new SqliteBookingDAO();
     }
 
 
 
     @FXML
     public void initialize() {
-        Restaurant selectedRestaurant = SharedData.getInstance().getSelectedRestaurant();
+        loggedInUser = MainController.loggedInUser;
+        selectedRestaurant = SharedData.getInstance().getSelectedRestaurant();
 
         if (selectedRestaurant != null) {
             name.setText(selectedRestaurant.getName());
             address.setText(selectedRestaurant.getAddress());
         }
-        // Initialize default values, if necessary
+
         timeComboBox.getSelectionModel().selectFirst(); // Select the first time option
     }
 
     public void setRestaurant(Restaurant restaurant) {
+        this.selectedRestaurant = restaurant;
         if (restaurant != null) {
             name.setText(restaurant.getName());
             address.setText(restaurant.getAddress());
@@ -64,41 +73,45 @@ public class BookingController {
     @FXML
     private void onBookButton() throws IOException{
         // Get user inputs
-        String numberOfPeople = peopleTextField.getText();
+        String peopleInput = peopleTextField.getText().trim(); // Get input and remove whitespace
+        int numberOfPeople;
         String selectedTime = timeComboBox.getValue();
 
+
+        if (loggedInUser == null || selectedRestaurant == null) {
+            // testing errors
+            System.out.println(selectedRestaurant);
+            System.out.println(loggedInUser);
+            return;
+        }
+
         // Validation of input
-        if (numberOfPeople.isEmpty()) {
-            showAlert("Error", "Please enter the number of people.");
-            return;
-        }
-
-        int peopleCount;
         try {
-            peopleCount = Integer.parseInt(numberOfPeople);
-            if (peopleCount <= 0) {
-                showAlert("Error", "Number of people must be greater than zero.");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            showAlert("Error", "Invalid number format. Please enter a valid number of people.");
+            numberOfPeople = Integer.parseInt(peopleInput); // Try to parse the input
+        } catch (NumberFormatException e) { // Handle parsing error
+            showAlert("Error", "Please enter a valid number for people.");
             return;
         }
 
 
-        // If all inputs are valid, you can now proceed with booking
-        showAlert("Success", "Table booked for " + peopleCount + " people at " + selectedTime + ".");
+        Booking booking = new Booking(loggedInUser.getId(), selectedRestaurant.getId(), numberOfPeople, selectedTime);
+
+        bookingDAO.addBooking(booking);
+
+        // If all inputs are valid, proceed
+        showAlert("Success", "Table booked for " + numberOfPeople + " people at " + selectedTime + ".");
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
+
+
     }
 
 
 
     @FXML
     private void onCancelButton() throws IOException{
-        // Clear the form fields or return to the previous page
         peopleTextField.clear();
         timeComboBox.getSelectionModel().selectFirst(); // Reset time selection to default
         showAlert("Cancelled", "Booking process has been cancelled.");
@@ -108,7 +121,7 @@ public class BookingController {
         stage.setScene(scene);
     }
 
-    // Utility function to display alert messages
+    //alert message
     private void showAlert(String title, String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);

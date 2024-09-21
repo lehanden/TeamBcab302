@@ -5,10 +5,9 @@ public class Booking {
     private int userId;
     private int restaurantId;
     private int numberOfPeople;
-    private float bookingTime;
+    private String bookingTime;
 
-    // Constructor, getters, and setters
-    public Booking(int userId, int restaurantId, int numberOfPeople, float bookingTime) {
+    public Booking(int userId, int restaurantId, int numberOfPeople, String bookingTime) {
         this.userId = userId;
         this.restaurantId = restaurantId;
         this.numberOfPeople = numberOfPeople;
@@ -47,11 +46,11 @@ public class Booking {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public float getBookingTime() {
+    public String getBookingTime() {
         return bookingTime;
     }
 
-    public void setBookingTime(float bookingTime) {
+    public void setBookingTime(String bookingTime) {
         this.bookingTime = bookingTime;
     }
 }

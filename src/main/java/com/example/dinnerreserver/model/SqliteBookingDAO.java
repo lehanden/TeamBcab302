@@ -33,18 +33,23 @@ public class SqliteBookingDAO implements IBookingDAO {
     // todo
     @Override
     public void addBooking(Booking booking) {
-        String sql = "INSERT INTO bookings(user_id, restaurant_id, number_of_people, booking_time) VALUES(?, ?, ?, ?)";
-
-        try (Connection conn = SqliteConnection.getInstance();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        String query = "INSERT INTO bookings (user_id, restaurant_id, number_of_people, booking_time) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setInt(1, booking.getUserId());
             pstmt.setInt(2, booking.getRestaurantId());
             pstmt.setInt(3, booking.getNumberOfPeople());
-            //pstmt.setfloat(4, booking.getBookingTime());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
 
+            pstmt.setString(4, booking.getBookingTime());
+            pstmt.executeUpdate();
+
+            // Get the generated booking ID
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    booking.setBookingId(generatedKeys.getInt(1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
