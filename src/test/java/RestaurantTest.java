@@ -1,4 +1,3 @@
-import com.example.dinnerreserver.controller.RestaurantController;
 import com.example.dinnerreserver.model.MockRestaurantDAO;
 import com.example.dinnerreserver.model.Restaurant;
 
