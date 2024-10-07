@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Updated Maven plugin to use JUnit 5" />
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Updated Maven to use Java 21">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +78,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -282,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728307985063</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Updated Maven to use Java 21">
+      <option name="closed" value="true" />
+      <created>1728308289030</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1728308289030</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -326,7 +336,8 @@
     <MESSAGE value="FIXED MASTER :DDDDDD" />
     <MESSAGE value="fixed user profile page" />
     <MESSAGE value="Updated Maven plugin to use JUnit 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Maven plugin to use JUnit 5" />
+    <MESSAGE value="Updated Maven to use Java 21" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Maven to use Java 21" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
