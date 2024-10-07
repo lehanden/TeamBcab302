@@ -5,15 +5,24 @@ import com.example.dinnerreserver.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+import com.example.dinnerreserver.model.Restaurant;
+
 
 public class RestaurantController {
 
     SqliteRestaurantDAO restaurantDAO;
+
+    @FXML
+    private ImageView restaurantImage;
 
     @FXML
     private Text name;
@@ -38,13 +47,14 @@ public class RestaurantController {
     @FXML
     private ImageView star5;
 
+
     public RestaurantController() {
         restaurantDAO = new SqliteRestaurantDAO();
         restaurantDAO.insertSampleData();
     }
 
     @FXML
-    public void selectRestaurant(Integer restaurantId)
+    public Restaurant selectRestaurant(Integer restaurantId) throws FileNotFoundException
     {
         Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
         Float restaurantRating = restaurant.getRating();
@@ -53,6 +63,11 @@ public class RestaurantController {
         address.setText(restaurant.getAddress());
         description.setText(restaurant.getDescription());
         rating.setText(rating_score);
+
+        String imageSource = restaurant.getImageSource();
+        Image restaurantImageSource = new Image(new FileInputStream(STR."./src/main/resources/com/example/dinnerreserver/\{imageSource}"));
+
+        restaurantImage.setImage(restaurantImageSource);
 
         if(restaurantRating > 4.4) {
             star1.setVisible(true);
@@ -75,13 +90,25 @@ public class RestaurantController {
         } else if(restaurantRating > 0.4) {
             star1.setVisible(true);
         }
+
+        SharedData.getInstance().setSelectedRestaurant(restaurant);
+        return restaurant;
     }
 
     @FXML
     private void onBack() throws IOException{
+        Restaurant selectedRestaurant = SharedData.getInstance().getSelectedRestaurant();
         Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    private void onForward() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        Stage stage = (Stage) Stage.getWindows().get(0);
         stage.setScene(scene);
     }
 }

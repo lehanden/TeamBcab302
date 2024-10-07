@@ -1,14 +1,26 @@
 package com.example.dinnerreserver.controller;
 
-import com.example.dinnerreserver.model.SqliteRestaurantDAO;
+import com.example.dinnerreserver.HelloApplication;
+import com.example.dinnerreserver.model.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import com.example.dinnerreserver.model.Restaurant;
 
 public class BookingController {
+
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label address;
 
     @FXML
     private TextField peopleTextField;
@@ -16,56 +28,100 @@ public class BookingController {
     @FXML
     private ComboBox<String> timeComboBox;
 
-    @FXML
-    private Button bookButton;
+    private SqliteRestaurantDAO restaurantDAO;
 
-    @FXML
-    private Button cancelButton;
+    private IBookingDAO bookingDAO;
+    private User loggedInUser;
+    private Restaurant selectedRestaurant;
+
+    public BookingController() {
+
+        restaurantDAO = new SqliteRestaurantDAO();
+        bookingDAO = new SqliteBookingDAO();
+    }
+
+
 
     @FXML
     public void initialize() {
-        // Initialize default values, if necessary
+        loggedInUser = MainController.loggedInUser;
+        selectedRestaurant = SharedData.getInstance().getSelectedRestaurant();
+
+        if (selectedRestaurant != null) {
+            name.setText(selectedRestaurant.getName());
+            address.setText(selectedRestaurant.getAddress());
+        }
+
         timeComboBox.getSelectionModel().selectFirst(); // Select the first time option
     }
 
-    @FXML
-    private void onBookButton() {
-        // Get user inputs
-        String numberOfPeople = peopleTextField.getText();
-        String selectedTime = timeComboBox.getValue();
-
-        // Validation of input
-        if (numberOfPeople.isEmpty()) {
-            showAlert("Error", "Please enter the number of people.");
-            return;
+    public void setRestaurant(Restaurant restaurant) {
+        this.selectedRestaurant = restaurant;
+        if (restaurant != null) {
+            name.setText(restaurant.getName());
+            address.setText(restaurant.getAddress());
         }
-
-        int peopleCount;
-        try {
-            peopleCount = Integer.parseInt(numberOfPeople);
-            if (peopleCount <= 0) {
-                showAlert("Error", "Number of people must be greater than zero.");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            showAlert("Error", "Invalid number format. Please enter a valid number of people.");
-            return;
-        }
-
-        // If all inputs are valid, you can now proceed with booking
-        showAlert("Success", "Table booked for " + peopleCount + " people at " + selectedTime + ".");
-        // Add booking logic here (e.g., saving the booking details)
     }
 
+    //@FXML
+    //private void onBack() throws IOException {
+       // Stage stage = (Stage) Stage.getWindows().get(0);
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("restaurantpage.fxml"));
+        //Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        //stage.setScene(scene);
+
     @FXML
-    private void onCancelButton() {
-        // Clear the form fields or return to the previous page
+    private void onBookButton() throws IOException{
+        // Get user inputs
+        String peopleInput = peopleTextField.getText().trim(); // Get input and remove whitespace
+        int numberOfPeople;
+        String selectedTime = timeComboBox.getValue();
+
+
+        if (loggedInUser == null || selectedRestaurant == null) {
+            // testing errors
+            System.out.println(selectedRestaurant);
+            System.out.println(loggedInUser);
+            return;
+        }
+
+        // Validation of input
+        try {
+            numberOfPeople = Integer.parseInt(peopleInput); // Try to parse the input
+        } catch (NumberFormatException e) { // Handle parsing error
+            showAlert("Error", "Please enter a valid number for people.");
+            return;
+        }
+
+
+        Booking booking = new Booking(loggedInUser.getId(), selectedRestaurant.getId(), numberOfPeople, selectedTime);
+
+        bookingDAO.addBooking(booking);
+
+        // If all inputs are valid, proceed
+        showAlert("Success", "Table booked for " + numberOfPeople + " people at " + selectedTime + ".");
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+
+
+    }
+
+
+
+    @FXML
+    private void onCancelButton() throws IOException{
         peopleTextField.clear();
         timeComboBox.getSelectionModel().selectFirst(); // Reset time selection to default
         showAlert("Cancelled", "Booking process has been cancelled.");
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
     }
 
-    // Utility function to display alert messages
+    //alert message
     private void showAlert(String title, String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);
@@ -74,3 +130,5 @@ public class BookingController {
         alert.showAndWait();
     }
 }
+
+

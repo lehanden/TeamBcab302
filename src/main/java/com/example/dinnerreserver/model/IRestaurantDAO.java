@@ -8,7 +8,10 @@ public interface IRestaurantDAO {
 
     public void deleteRestaurant(Restaurant restaurant);
 
+    public void updateRestaurant(Restaurant restaurant);
+
     public Restaurant getRestaurant(int id);
 
     public List<Restaurant> getAllRestaurants();
+
 }
