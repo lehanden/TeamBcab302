@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.example.dinnerreserver.model.Restaurant;
+import com.example.dinnerreserver.model.SqliteBookingDAO;
 
 public class BookingController {
 
@@ -52,7 +53,32 @@ public class BookingController {
             address.setText(selectedRestaurant.getAddress());
         }
 
-        timeComboBox.getSelectionModel().selectFirst(); // Select the first time option
+        // Populate the time slots in the ComboBox
+        timeComboBox.getItems().addAll("5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM");
+
+        // Disable full time slots (50 people or more)
+        for (String timeSlot : timeComboBox.getItems()) {
+            int totalPeople = bookingDAO.countBookingsForTimeSlot(selectedRestaurant.getId(), timeSlot);
+            if (totalPeople >= 50) {
+                timeComboBox.setCellFactory(lv -> new ListCell<String>() {
+                    @Override
+                    public void updateItem(String time, boolean empty) {
+                        super.updateItem(time, empty);
+                        if (empty || time == null) {
+                            setText(null);
+                        } else {
+                            setText(time);
+                            if (time.equals(timeSlot) && totalPeople >= 50) {
+                                setDisable(true);  // Disable the time slot
+                                setStyle("-fx-opacity: 0.5;");  // Gray out the disabled time slot
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        timeComboBox.getSelectionModel().selectFirst(); // Select the first available time slot by default
     }
 
     public void setRestaurant(Restaurant restaurant) {
