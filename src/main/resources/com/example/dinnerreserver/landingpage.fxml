@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.Image?>
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.LandingController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Label layoutX="212.0" layoutY="52.0" text="SB EATS">
-                    <font>
-                        <Font size="60.0" />
-                    </font>
-                </Label>
+                <!-- Add ImageView instead of Label -->
+                <ImageView layoutX="180.0" layoutY="52.0" fitWidth="280.0" fitHeight="100.0">
+                    <image>
+                        <Image url="@Logo.png" />
+                    </image>
+                </ImageView>
                 <Button fx:id="signUpButton" layoutX="291.0" layoutY="175.0" mnemonicParsing="false" onAction="#onSignUpButton" text="Sign Up" />
                 <Button fx:id="signInButton" layoutX="295.0" layoutY="244.0" mnemonicParsing="false" onAction="#onSignInButton" text="Sign In" />
             </children>
         </AnchorPane>
     </children>
 </VBox>
+
