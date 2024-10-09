@@ -1,9 +1,14 @@
 /* Select all buttons and set the background color to red and the text color to white */
 .button {
-    -fx-background-color: #121212;
-    -fx-text-fill: white;
+    -fx-background-color: #f0e9d7;
+    -fx-text-fill: black;
     -fx-border-color: white;
     -fx-border-radius: 5;
+    -fx-pref-width: 150px;  /* Set preferred width */
+    -fx-pref-height: 50px;  /* Set preferred height */
+    -fx-font-size: 16px;    /* Increase font size */
+    -fx-padding: 10px;      /* Add padding */
+
 }
 
 /* Set color of button when mouse hovers over it */
@@ -29,5 +34,5 @@
 
 /* Set the root's color to lightblue */
 .root {
-    -fx-background-color: #121212;
+    -fx-background-color: #292121;
 }

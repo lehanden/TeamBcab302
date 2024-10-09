@@ -9,23 +9,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.MainController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.MainController" stylesheets="@stylesheet.css">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="260.0" layoutY="314.0" mnemonicParsing="false" text="Sign Up" onAction="#onCreateAccount"/>
-            <Button layoutX="330.0" layoutY="314.0" mnemonicParsing="false" text="Back" onAction="#onBack"/>
-            <Label layoutX="212.0" layoutY="52.0" text="SB EATS">
-               <font>
-                  <Font size="60.0" />
-               </font>
-            </Label>
+            <Button layoutX="150.0" layoutY="314.0" mnemonicParsing="false" text="Sign Up" onAction="#onCreateAccount"/>
+            <Button layoutX="350.0" layoutY="314.0" mnemonicParsing="false" text="Back" onAction="#onBack"/>
+            <ImageView layoutX="250.0" layoutY="10.0" fitWidth="150.0" fitHeight="150.0">
+               <image>
+                  <Image url="@Logo.png" />
+               </image>
+            </ImageView>
             <TextField fx:id="usernameTextField" layoutX="246.0" layoutY="175.0" />
             <Label layoutX="294.0" layoutY="158.0" text="Username" />
             <Label layoutX="296.0" layoutY="258.0" text="Password" />
             <PasswordField fx:id="passwordTextField" layoutX="246.0" layoutY="275.0" />
             <TextField fx:id="emailTextField" layoutX="246.0" layoutY="225.0" />
-            <Text layoutX="307.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <Label layoutX="307.0" layoutY="210.0" text="Email" />
          </children>
       </AnchorPane>
    </children>

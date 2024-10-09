@@ -97,11 +97,7 @@ public class BookingController {
 
 
     @FXML
-    private void onCancelButton() throws IOException{
-        // Clear the form fields or return to the previous page
-        peopleTextField.clear();
-        timeComboBox.getSelectionModel().selectFirst(); // Reset time selection to default
-        showAlert("Cancelled", "Booking process has been cancelled.");
+    private void onBack() throws IOException{
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
@@ -117,5 +113,6 @@ public class BookingController {
         alert.showAndWait();
     }
 }
+
 
 

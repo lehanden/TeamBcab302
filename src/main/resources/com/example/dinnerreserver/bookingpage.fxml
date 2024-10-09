@@ -22,6 +22,7 @@
                </font>
             </Label>
 
+
             <!-- Number of People -->
             <Label layoutX="250.0" layoutY="100.0" text="Number of People:"/>
             <TextField fx:id="peopleTextField" layoutX="400.0" layoutY="95.0" prefWidth="150.0"/>
@@ -43,8 +44,8 @@
             </ComboBox>
 
             <!-- Book and Cancel Buttons -->
-            <Button fx:id="bookButton" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" text="Book" onAction="#onBookButton" />
-            <Button fx:id="cancelButton" layoutX="450.0" layoutY="250.0" mnemonicParsing="false" text="Cancel" onAction="#onCancelButton" />
+            <Button fx:id="bookButton" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" text="Book" />
+            <Button fx:id="cancelButton" layoutX="450.0" layoutY="250.0" mnemonicParsing="false" text="Cancel" />
          </children>
       </AnchorPane>
    </children>
