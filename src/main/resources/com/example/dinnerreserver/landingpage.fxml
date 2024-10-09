@@ -10,9 +10,9 @@
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
                 <!-- Add ImageView instead of Label -->
-                <ImageView layoutX="180.0" layoutY="52.0" fitWidth="280.0" fitHeight="100.0">
+                <ImageView layoutX="180.0" layoutY="52.0" fitWidth="1000.0" fitHeight="644.0">
                     <image>
-                        <Image url="@Logo.png" />
+                        <Image url="@background.png" />
                     </image>
                 </ImageView>
                 <Button fx:id="signUpButton" layoutX="291.0" layoutY="175.0" mnemonicParsing="false" onAction="#onSignUpButton" text="Sign Up" />
