@@ -18,6 +18,10 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        String stylesheet = HelloApplication.class.getResource("stylesheet.css").toExternalForm();
+        scene.getStylesheets().add(stylesheet);
+
         stage.setTitle(TITLE);
         stage.setScene(scene);
         stage.show();

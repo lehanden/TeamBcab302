@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Finished Bookingpage looking dynamic, started on booking table but incomplete">
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Pls fix v3">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_16_16_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_16_16_[Changes]/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_16_16__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_17_32_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_17_32_[Changes]1/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_17_32__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_21_18_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_21_18_[Changes]/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_21_18__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2024_18_01_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2024_18_01_[Changes]/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2024_18_01__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SBEats.db" beforeDir="false" afterPath="$PROJECT_DIR$/SBEats.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/model/SqliteBookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/model/SqliteBookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/bookingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/bookingpage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -42,8 +54,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302&quot;,
-    &quot;accountId&quot;: &quot;2969fdf4-993d-4a7b-9d79-c70a9ca4e23f&quot;
+    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,
+    &quot;accountId&quot;: &quot;452c58fe-5b63-4129-a639-62644e3f6e24&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -64,24 +76,18 @@
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#1 on detached&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;detached&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/darcy/IdeaProjects/TeamBcab302/src/main/java/com/example/dinnerreserver&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.example.dinnerreserver" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.dinnerreserver.HelloApplication" />
@@ -199,31 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726471913637</updated>
     </task>
-    <task id="LOCAL-00012" summary="Set up profile button on browse page">
+    <task id="LOCAL-00012" summary="Pls fix v3">
       <option name="closed" value="true" />
-      <created>1726732196172</created>
+      <created>1726735218575</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1726732196172</updated>
+      <updated>1726735218575</updated>
     </task>
-    <task id="LOCAL-00013" summary="tried my best but couldnt do it">
-      <option name="closed" value="true" />
-      <created>1726755414991</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1726755414991</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Finished Bookingpage looking dynamic, started on booking table but incomplete">
-      <option name="closed" value="true" />
-      <created>1726785685860</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1726785685860</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,10 +239,8 @@
     <MESSAGE value="Added basic Browse Page, linked to landingpage by test button" />
     <MESSAGE value="Added back button to Restaurant page for increased functionality" />
     <MESSAGE value="Set up blank User-Profile page. Linked to landingpage" />
-    <MESSAGE value="Set up profile button on browse page" />
-    <MESSAGE value="tried my best but couldnt do it" />
-    <MESSAGE value="Finished Bookingpage looking dynamic, started on booking table but incomplete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Bookingpage looking dynamic, started on booking table but incomplete" />
+    <MESSAGE value="Pls fix v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pls fix v3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -261,6 +249,11 @@
           <properties class="java.lang.ClassNotFoundException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
