@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="css update">
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="css update final">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/restaurantstylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/bookingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/bookingpage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/browsepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/browsepage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/loginpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/loginpage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/signuppage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/signuppage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/main-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728446679739</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="css update final">
+      <option name="closed" value="true" />
+      <created>1728456543867</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1728456543867</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,7 +227,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/detached" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -238,7 +259,8 @@
     <MESSAGE value="Set up blank User-Profile page. Linked to landingpage" />
     <MESSAGE value="Pls fix v3" />
     <MESSAGE value="css update" />
-    <option name="LAST_COMMIT_MESSAGE" value="css update" />
+    <MESSAGE value="css update final" />
+    <option name="LAST_COMMIT_MESSAGE" value="css update final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -261,6 +283,9 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TeamBcab302$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1728533400575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.dinnerreserver.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/DinnerReserver$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1725687864772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.dinnerreserver.*</FILTER>
     </SUITE>

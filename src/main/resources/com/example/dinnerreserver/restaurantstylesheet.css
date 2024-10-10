@@ -1,0 +1,55 @@
+/* stylesheet.css */
+
+.root {
+    -fx-background-color: #292121;
+}
+
+/* Style for the AnchorPane */
+.anchor-pane {
+    -fx-background-color: #292121; /* Light grey background */
+}
+
+/* Style for the ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-border-color: #cccccc; /* Light border */
+    -fx-border-width: 1; /* Border width */
+}
+
+/* Style for the VBox inside the ScrollPane */
+#restaurantContainer {
+    -fx-background-color: #ffffff; /* White background for content */
+    -fx-padding: 10; /* Padding inside the VBox */
+}
+
+/* Style for TextField */
+.text-field {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #cccccc; /* Light border */
+    -fx-border-width: 1; /* Border width */
+    -fx-padding: 5; /* Padding inside the TextField */
+}
+
+/* Style for ComboBox */
+.combo-box {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #cccccc; /* Light border */
+    -fx-border-width: 1; /* Border width */
+}
+
+/button {
+     -fx-background-color: #f0e9d7;
+     -fx-text-fill: black;
+     -fx-border-color: white;
+     -fx-border-radius: 5;
+
+ }
+
+ /* Set color of button when mouse hovers over it */
+ .button:hover {
+     -fx-background-color: #2e2e2e;
+     -fx-text-fill: white;
+ }
+
+
+

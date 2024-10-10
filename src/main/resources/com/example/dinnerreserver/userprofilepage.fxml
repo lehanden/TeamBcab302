@@ -5,18 +5,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.UserProfileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.UserProfileController" stylesheets="@stylesheet.css">
    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+   <ImageView layoutX="50.0" layoutY="105.0" fitWidth="150.0" fitHeight="150.0">
+      <image>
+         <Image url="@Logo.png" />
+      </image>
+   </ImageView>
    <VBox layoutX="255.0" layoutY="120.0">
-   <Text text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-   <Text fx:id="username" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+      <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="white-text"/>
+      <Text fx:id="username" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="white-text"/>
 
-   <Text text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-   <Text fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+      <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="white-text"/>
+      <Text fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="white-text"/>
 
-   <Text text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-   <PasswordField fx:id="password" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+      <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="white-text"/>
+      <PasswordField fx:id="password" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
    </VBox>
 </AnchorPane>

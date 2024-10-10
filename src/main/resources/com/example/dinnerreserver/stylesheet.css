@@ -32,7 +32,11 @@
     -fx-text-fill: white;
 }
 
-/* Set the root's color to lightblue */
+.white-text {
+    -fx-text-fill: white;
+}
+
+/* Set the root's color to  */
 .root {
     -fx-background-color: #292121;
 }
