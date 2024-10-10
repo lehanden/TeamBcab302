@@ -2,15 +2,13 @@ package com.example.dinnerreserver.controller;
 
 import com.example.dinnerreserver.HelloApplication;
 import com.example.dinnerreserver.controller.RestaurantController;
+import com.example.dinnerreserver.model.RestaurantManager;
 import com.example.dinnerreserver.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,11 +25,17 @@ public class BrowseController {
 
     SqliteRestaurantDAO restaurantDAO;
 
+    private RestaurantManager restaurantManager;
+
     @FXML
     private ScrollPane scrollPane;
 
     @FXML
     private VBox restaurantContainer;
+
+    @FXML
+    private TextField searchField;
+
 
     private List<Restaurant> restaurantList = new ArrayList<>();
 
@@ -42,9 +46,13 @@ public class BrowseController {
     @FXML
     public void initialize() {
         loggedInUser = MainController.loggedInUser;
-        restaurantDAO = new SqliteRestaurantDAO();
+//        restaurantDAO = new SqliteRestaurantDAO();
+//        loadRestaurantsFromDB();
+//        populateRestaurantUI();
+        restaurantManager = new RestaurantManager(new SqliteRestaurantDAO());
         loadRestaurantsFromDB();
-        populateRestaurantUI();
+        populateRestaurantUI(restaurantList);
+        searchField.setOnAction(event -> searchRestaurants());
     }
 
     @FXML
@@ -74,35 +82,41 @@ public class BrowseController {
 
     // Load restaurants from the database
     private void loadRestaurantsFromDB() {
-        String url = "jdbc:sqlite:SBEats.db"; // Path to your SQLite database
-        String query = "SELECT id, name, address, description, rating, imageSource FROM restaurants"; // SQL query to get restaurant data
-
-        try (Connection conn = DriverManager.getConnection(url);
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String address = rs.getString("address");
-                String description = rs.getString("description");
-                Float rating = rs.getFloat("rating");
-                String imageSource = rs.getString("imageSource");
-
-                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource); // Create a Restaurant object
-                restaurantList.add(restaurant); // Add the restaurant to the list
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        restaurantList = restaurantManager.getAllRestaurants();
+//        String url = "jdbc:sqlite:SBEats.db"; // Path to your SQLite database
+//        String query = "SELECT id, name, address, description, rating, imageSource FROM restaurants"; // SQL query to get restaurant data
+//
+//        try (Connection conn = DriverManager.getConnection(url);
+//             PreparedStatement stmt = conn.prepareStatement(query);
+//             ResultSet rs = stmt.executeQuery()) {
+//
+//            while (rs.next()) {
+//                int id = rs.getInt("id");
+//                String name = rs.getString("name");
+//                String address = rs.getString("address");
+//                String description = rs.getString("description");
+//                Float rating = rs.getFloat("rating");
+//                String imageSource = rs.getString("imageSource");
+//
+//                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource); // Create a Restaurant object
+//                restaurantList.add(restaurant); // Add the restaurant to the list
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }
+    private void searchRestaurants(){
+        String query = searchField.getText();
+        List<Restaurant> searchResults = restaurantManager.searchRestaurants(query);
+        populateRestaurantUI(searchResults);
     }
 
     // Populate the ScrollPane with restaurant data
-    private void populateRestaurantUI() {
+    private void populateRestaurantUI(List<Restaurant> restaurants) {
         restaurantContainer.getChildren().clear(); // Clear any existing content in the VBox
 
-        for (Restaurant restaurant : restaurantList) {
+        for (Restaurant restaurant : restaurants) {
             Label nameLabel = new Label("Name: " + restaurant.getName());
             Label addressLabel = new Label("Address: " + restaurant.getAddress());
             Label descriptionLabel = new Label("Description: " + restaurant.getDescription());
