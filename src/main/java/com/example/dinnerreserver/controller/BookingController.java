@@ -12,10 +12,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.dinnerreserver.model.Restaurant;
 import com.example.dinnerreserver.model.SqliteBookingDAO;
 
 public class BookingController {
+
+    private List<String> disabledTimeSlots = new ArrayList<>();
 
     @FXML
     private Label name;
@@ -59,24 +64,29 @@ public class BookingController {
         // Disable full time slots (50 people or more)
         for (String timeSlot : timeComboBox.getItems()) {
             int totalPeople = bookingDAO.countBookingsForTimeSlot(selectedRestaurant.getId(), timeSlot);
-            if (totalPeople >= 50) {
-                timeComboBox.setCellFactory(lv -> new ListCell<String>() {
-                    @Override
-                    public void updateItem(String time, boolean empty) {
-                        super.updateItem(time, empty);
-                        if (empty || time == null) {
-                            setText(null);
-                        } else {
-                            setText(time);
-                            if (time.equals(timeSlot) && totalPeople >= 50) {
-                                setDisable(true);  // Disable the time slot
-                                setStyle("-fx-opacity: 0.5;");  // Gray out the disabled time slot
-                            }
-                        }
-                    }
-                });
+
+            // Check if this slot is already disabled or if it exceeds 50 people
+            if (totalPeople >= 50 && !disabledTimeSlots.contains(timeSlot)) {
+                disabledTimeSlots.add(timeSlot);  // Add it to the list of permanently disabled slots
             }
         }
+
+        // Set the cell factory once to check the list of permanently disabled slots
+        timeComboBox.setCellFactory(lv -> new ListCell<String>() {
+            @Override
+            public void updateItem(String time, boolean empty) {
+                super.updateItem(time, empty);
+                if (empty || time == null) {
+                    setText(null);
+                } else {
+                    setText(time);
+                    if (disabledTimeSlots.contains(time)) {
+                        setDisable(true);  // Permanently disable the time slot
+                        setStyle("-fx-opacity: 0.5;");  // Gray out the disabled time slot
+                    }
+                }
+            }
+        });
 
         timeComboBox.getSelectionModel().selectFirst(); // Select the first available time slot by default
     }
@@ -125,7 +135,7 @@ public class BookingController {
         bookingDAO.addBooking(booking);
 
         // If all inputs are valid, proceed
-        showAlert("Success", "Table booked for " + numberOfPeople + " people at " + selectedTime + ".");
+        showAlert("Success", "Table booked for " + numberOfPeople + " people at " + selectedTime + " today.");
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
