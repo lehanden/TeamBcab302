@@ -17,8 +17,13 @@ public class RestaurantManager {
     private boolean isRestaurantMatched(Restaurant restaurant, String query){
         if(query == null || query.isEmpty()) return true;
         query = query.toLowerCase();
-        String searchString = restaurant.getName();
-        return searchString.toLowerCase().contains(query);
+
+        String name = restaurant.getName().toLowerCase();
+        String address = restaurant.getAddress().toLowerCase();
+        String description = restaurant.getDescription().toLowerCase();
+
+        return name.contains(query) || address.contains(query) || description.contains(query);
+        //return searchString.toLowerCase().contains(query);
     }
 
     public void addRestaurant(Restaurant restaurant){
