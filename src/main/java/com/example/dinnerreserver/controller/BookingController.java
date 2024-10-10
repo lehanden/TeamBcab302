@@ -140,8 +140,6 @@ public class BookingController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
-
-
     }
 
 
@@ -157,7 +155,7 @@ public class BookingController {
         stage.setScene(scene);
     }
 
-    //alert message
+    // Utility function to display alert messages
     private void showAlert(String title, String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);

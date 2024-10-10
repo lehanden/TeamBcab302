@@ -3,14 +3,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BrowseController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BrowseController" stylesheets="@browsingpagestylesheet.css">
     <children>
-        <ScrollPane fx:id="scrollPane" layoutX="25.0" layoutY="64.0" prefHeight="318.0" prefWidth="550.0">
-            <VBox fx:id="restaurantContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="500.0" spacing="10">
+        <ScrollPane fx:id="scrollPane" layoutX="25.0" layoutY="80.0" prefHeight="318.0" prefWidth="562.0">
+            <VBox fx:id="restaurantContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="600.0" spacing="10">
                 <!-- Dynamic content will be added here from the controller -->
             </VBox>
         </ScrollPane>
-        <TextField fx:id="searchField" layoutX="25.0" layoutY="28.0" prefHeight="26.0" prefWidth="435.0" promptText="Search..." />
+        <ImageView layoutX="280.0" layoutY="1.0" fitWidth="50.0" fitHeight="50.0">
+            <image>
+                <Image url="@Logo.png" />
+            </image>
+        </ImageView>
+        <TextField layoutX="25.0" layoutY="28.0" prefHeight="26.0" prefWidth="435.0" promptText="Search..." />
         <ComboBox layoutX="472.0" layoutY="29.0" prefHeight="26.0" prefWidth="115.0" promptText="Filters" />
         <Button layoutX="540.0" layoutY="1.0" mnemonicParsing="false" onAction="#onBack" prefHeight="17.0" prefWidth="60.0" text="Log out" />
       <Button mnemonicParsing="false" onAction="#onProfile" text="Profile" />

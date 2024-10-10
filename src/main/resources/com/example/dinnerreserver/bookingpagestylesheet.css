@@ -1,0 +1,51 @@
+
+.root {
+    -fx-background-color: #2d211f;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+#name {
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#address {
+    -fx-text-fill: #d3d3d3;
+    -fx-font-size: 14px;
+}
+.text-field {
+    -fx-background-color: #f5e6d4;
+    -fx-border-color: white;
+    -fx-border-radius: 10px;
+    -fx-text-fill: white;
+}
+.combo-box {
+    -fx-background-color: #f5e6d4;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-radius: 10px;
+}
+.combo-box .list-cell {
+    -fx-background-color: #f5e6d4;
+    -fx-text-fill: white;
+}
+.combo-box:hover {
+    -fx-background-color: #3e312f;
+}
+.button {
+    -fx-background-color: #f5e6d4;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-border-radius: 20px;
+    -fx-padding: 10px 20px;
+}
+.button:hover {
+    -fx-background-color: #d4c5b2;
+    -fx-cursor: hand;
+}
+
