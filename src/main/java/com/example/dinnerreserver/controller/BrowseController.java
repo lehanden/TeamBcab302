@@ -37,8 +37,6 @@ public class BrowseController {
 
     public User loggedInUser;
 
-
-
     @FXML
     public void initialize() {
         loggedInUser = MainController.loggedInUser;

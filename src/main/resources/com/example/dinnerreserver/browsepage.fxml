@@ -17,10 +17,6 @@
                 <Image url="@Logo.png" />
             </image>
         </ImageView>
-        <TextField layoutX="25.0" layoutY="45.0" prefHeight="26.0" prefWidth="435.0" promptText="Search..." />
-        <ComboBox layoutX="472.0" layoutY="45.0" prefHeight="26.0" prefWidth="115.0" promptText="Filters" />
-        <Button layoutX="520.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBack" prefHeight="17.0" prefWidth="70.0" text="Log out" />
-      <Button layoutX="25.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfileButton" text="Profile" />
         <TextField layoutX="25.0" layoutY="28.0" prefHeight="26.0" prefWidth="435.0" promptText="Search..." />
         <ComboBox layoutX="472.0" layoutY="29.0" prefHeight="26.0" prefWidth="115.0" promptText="Filters" />
         <Button layoutX="540.0" layoutY="1.0" mnemonicParsing="false" onAction="#onBack" prefHeight="17.0" prefWidth="60.0" text="Log out" />
