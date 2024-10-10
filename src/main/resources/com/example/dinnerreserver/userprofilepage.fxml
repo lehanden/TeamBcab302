@@ -14,10 +14,10 @@
    </ImageView>
    <VBox layoutX="255.0" layoutY="120.0">
       <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="white-text"/>
-      <Text fx:id="username" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="white-text"/>
+      <Text fx:id="username" fill="WHITE" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="white-text"/>
 
       <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="white-text"/>
-      <Text fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="white-text"/>
+      <Text fx:id="email" fill="WHITE" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="white-text"/>
       <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="white-text"/>
       <PasswordField fx:id="password" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 

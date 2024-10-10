@@ -27,15 +27,12 @@
 .combo-box {
     -fx-background-color: #f5e6d4;
     -fx-border-color: white;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-border-radius: 10px;
 }
 .combo-box .list-cell {
     -fx-background-color: #f5e6d4;
-    -fx-text-fill: white;
-}
-.combo-box:hover {
-    -fx-background-color: #3e312f;
+    -fx-text-fill: black;
 }
 .button {
     -fx-background-color: #f5e6d4;

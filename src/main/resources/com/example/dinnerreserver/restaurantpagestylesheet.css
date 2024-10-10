@@ -17,17 +17,20 @@
 }
 #name {
     -fx-text-fill: #fff;
-    -fx-font-size: 36px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
 #address {
-    -fx-text-fill: #d3d3d3;
-    -fx-font-size: 18px;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
 }
 #description {
-    -fx-text-fill: #d3d3d3;
+    -fx-text-fill: #fff;
     -fx-font-size: 14px;
     -fx-wrap-text: true;
+}
+#rating{
+    -fx-text-fill: #fff;
 }
 .button:hover {
     -fx-background-color: #d4c5b2;
