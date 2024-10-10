@@ -1,0 +1,67 @@
+
+/* Set the background and main font */
+.root {
+    -fx-background-color: #2d211f; /* Dark brown background */
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Styling for the labels */
+.label {
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Styling for the larger name label */
+#name {
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Styling for the address label */
+#address {
+    -fx-text-fill: #d3d3d3;
+    -fx-font-size: 14px;
+}
+
+/* Style for text fields */
+.text-field {
+    -fx-background-color: #f5e6d4; /* Transparent background */
+    -fx-border-color: white; /* White border */
+    -fx-border-radius: 10px; /* Rounded corners */
+    -fx-text-fill: white; /* White text */
+}
+
+/* Style for combo boxes */
+.combo-box {
+    -fx-background-color: #f5e6d4;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-radius: 10px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #f5e6d4;
+    -fx-text-fill: white;
+}
+
+.combo-box:hover {
+    -fx-background-color: #3e312f;
+}
+
+/* Button styles */
+.button {
+    -fx-background-color: #f5e6d4; /* Light beige background */
+    -fx-text-fill: black; /* Black text */
+    -fx-font-weight: bold;
+    -fx-border-radius: 20px; /* Rounded button */
+    -fx-padding: 10px 20px;
+}
+
+.button:hover {
+    -fx-background-color: #d4c5b2;
+    -fx-cursor: hand; /* Change cursor to pointer on hover */
+}
+

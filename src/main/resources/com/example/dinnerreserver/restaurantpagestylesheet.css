@@ -1,0 +1,40 @@
+.root {
+    -fx-background-color: #2d211f;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+.text {
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-color: #f5e6d4;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-border-radius: 20px;
+    -fx-padding: 10px 20px;
+}
+#name {
+    -fx-text-fill: #fff;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+#address {
+    -fx-text-fill: #d3d3d3;
+    -fx-font-size: 18px;
+}
+#description {
+    -fx-text-fill: #d3d3d3;
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+}
+.button:hover {
+    -fx-background-color: #d4c5b2;
+    -fx-cursor: hand;
+}
+#bookButton, #menuButton, #backButton {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 20px;
+}
