@@ -29,19 +29,7 @@
 
             <!-- Time Selection -->
             <Label layoutX="250.0" layoutY="150.0" text="Select time:"/>
-            <ComboBox fx:id="timeComboBox" layoutX="400.0" layoutY="145.0" prefWidth="150.0">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="5:00 PM"/>
-                     <String fx:value="6:00 PM"/>
-                     <String fx:value="7:00 PM"/>
-                     <String fx:value="8:00 PM"/>
-                     <String fx:value="9:00 PM"/>
-                     <String fx:value="10:00 PM"/>
-                     <String fx:value="10:30 PM"/>
-                  </FXCollections>
-               </items>
-            </ComboBox>
+            <ComboBox fx:id="timeComboBox" layoutX="400.0" layoutY="145.0" prefWidth="150.0" />
 
             <!-- Book and Cancel Buttons -->
             <Button fx:id="bookButton" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" text="Book" />

@@ -2,7 +2,7 @@ package com.example.dinnerreserver.model;
 
 public class SharedData {
     private static SharedData instance;
-    private Restaurant selectedRestaurant;
+    public Restaurant selectedRestaurant;
 
     private SharedData() {}
 

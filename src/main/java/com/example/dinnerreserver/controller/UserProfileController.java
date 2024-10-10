@@ -14,18 +14,7 @@ import java.io.IOException;
 public class UserProfileController {
 
     SqliteUserDAO UserProfileDAO;
-
-    @FXML
-    private void onBack() throws IOException{
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        stage.setScene(scene);
-    }
-
-    public UserProfileController() {
-        UserProfileDAO = new SqliteUserDAO();
-    }
+    private User loggedInUser;
 
     @FXML
     private Text username;
@@ -36,13 +25,29 @@ public class UserProfileController {
     @FXML
     private PasswordField password;
 
-    @FXML
-    public void selectUser(Integer userId)
-    {
-        User user = UserProfileDAO.getUser(userId);
-        username.setText(user.getUsername());
-        email.setText(user.getEmail());
-        password.setText(user.getPassword());
+    public UserProfileController() {
+        UserProfileDAO = new SqliteUserDAO();
     }
 
+    // logged-in user
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+        displayUserDetails();
+    }
+
+
+    private void displayUserDetails() {
+        if (loggedInUser != null) {
+            username.setText(loggedInUser.getUsername());
+            email.setText(loggedInUser.getEmail());
+            password.setText(loggedInUser.getPassword());
+        }
+    }
+    @FXML
+   private void onBack() throws IOException{
+        Stage stage = (Stage) Stage.getWindows().get(0);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        stage.setScene(scene);
+    }
 }

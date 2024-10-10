@@ -29,6 +29,8 @@ public class MainController {
     @FXML
     private TextField loginPasswordTextField;
 
+    public static User loggedInUser;
+
     public MainController() {
         userDAO = new SqliteUserDAO();
     }
@@ -43,6 +45,8 @@ public class MainController {
             User newUser = new User(username, email, password);
             userDAO.addUser(newUser);
             clearCreateAccountFields();
+            //current user
+            loggedInUser = newUser;
             //System.out.println("Creation Successful! Welcome "+ username);
             showAlert(AlertType.INFORMATION, "Creation Successful", "Account Created, welcome " + username + ".");
             onForward();
@@ -61,6 +65,8 @@ public class MainController {
         if (user != null && user.getPassword().equals(password)) {
             // Login successful
             //System.out.println("Log In Successful!");
+            //current user
+            loggedInUser = user;
             showAlert(AlertType.INFORMATION, "Log in Successful", "Welcome "+ username + ".");
             onForward();
         } else {
@@ -97,6 +103,8 @@ public class MainController {
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        BrowseController browseController = fxmlLoader.getController();
+        browseController.setLoggedInUser(loggedInUser);
         stage.setScene(scene);
     }
 

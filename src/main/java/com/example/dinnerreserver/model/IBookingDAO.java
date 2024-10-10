@@ -5,6 +5,7 @@ import java.util.List;
 public interface IBookingDAO {
     public void addBooking(Booking booking);
 
+    public int countBookingsForTimeSlot(int restaurantId, String timeSlot);
 
     public void deleteBooking(Booking booking);
 

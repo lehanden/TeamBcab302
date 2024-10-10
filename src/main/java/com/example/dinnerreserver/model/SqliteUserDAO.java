@@ -83,6 +83,7 @@ public class SqliteUserDAO implements IUserDAO {
     }
 
 
+
     @Override
     public void deleteUser(User user) {
         try {
@@ -156,5 +157,6 @@ public class SqliteUserDAO implements IUserDAO {
         }
         return null;
     }
+
 
 }

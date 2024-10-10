@@ -14,6 +14,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import com.example.dinnerreserver.model.Restaurant;
+
 
 public class RestaurantController {
 
@@ -44,6 +46,7 @@ public class RestaurantController {
     private ImageView star4;
     @FXML
     private ImageView star5;
+
 
     public RestaurantController() {
         restaurantDAO = new SqliteRestaurantDAO();
@@ -94,6 +97,7 @@ public class RestaurantController {
 
     @FXML
     private void onBack() throws IOException{
+        Restaurant selectedRestaurant = SharedData.getInstance().getSelectedRestaurant();
         Stage stage = (Stage) Stage.getWindows().get(0);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
@@ -103,10 +107,8 @@ public class RestaurantController {
     @FXML
     private void onForward() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("bookingpage.fxml"));
-        Stage stage = (Stage) Stage.getWindows().get(0);
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        BookingController controller = fxmlLoader.getController();
-        controller.setRestaurant(SharedData.getInstance().getSelectedRestaurant());
+        Stage stage = (Stage) Stage.getWindows().get(0);
         stage.setScene(scene);
     }
 }
