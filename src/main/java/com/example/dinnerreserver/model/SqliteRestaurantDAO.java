@@ -30,7 +30,8 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                     + "address VARCHAR NOT NULL,"
                     + "description VARCHAR NOT NULL,"
                     + "rating FLOAT NOT NULL,"
-                    + "imageSource VARCHAR NOT NULL"
+                    + "imageSource VARCHAR NOT NULL,"
+                    + "menuSource VARCHAR NOT NULL"
                     + ")";
             create.execute(createQuery);
         } catch (Exception e) {
@@ -47,22 +48,25 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
             if (resultSet.next() && resultSet.getInt(1) == 0) {
                 // Only insert sample data if the table is empty
                 Statement insertStatement = connection.createStatement();
-                String insertQuery = "INSERT INTO restaurants (name, address, description, rating, imageSource) VALUES "
+                String insertQuery = "INSERT INTO restaurants (name, address, description, rating, imageSource, menuSource) VALUES "
                     + "('San Kai Japanese Restaurant', " +
                         "'164 Grey St, South Brisbane', " +
                         "'Japanese classics like sushi, tempura & gyoza served in a chic dining room with sidewalk seating.', " +
                         "3.0," +
-                        "'Restaurant1.jpg'),"
+                        "'Restaurant1.jpg'," +
+                        "'https://quandoo-assets-partner.s3-eu-west-1.amazonaws.com/partner/uploads/d52bde99-b012-4cf1-ade2-3a243296e54b/MD-document-ad724adf-6a9b-47af-9ec0-4a579a1f3abd.pdf'),"
                     + "('Olé Restaurant', " +
                         "'Shop/B12 Little Stanley St, South Brisbane', " +
                         "'Vibrant Spanish eatery with tapas, sangria bar and stylish decor, plus an intricate wooden ceiling.', " +
                         "4.2," +
-                        "'Restaurant2.jpeg'),"
+                        "'Restaurant2.jpeg'," +
+                        "'https://olerestaurant.com.au/menu/'),"
                     + "('Geláre South Bank', " +
                         "'3/164 Grey St, South Brisbane QLD 4101', " +
                         "'Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.', " +
                         "3.9," +
-                        "'Restaurant3.jpg')";
+                        "'Restaurant3.jpg'," +
+                        "'https://gelare.com.au/menu/')";
                 insertStatement.execute(insertQuery);
             }
         } catch (Exception e) {
@@ -73,12 +77,13 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
     @Override
     public void addRestaurant(Restaurant restaurants) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO restaurants (name, address, description, rating, imageSource) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO restaurants (name, address, description, rating, imageSource, menuSource) VALUES (?, ?, ?, ?, ?, ?)");
             statement.setString(1, restaurants.getName());
             statement.setString(2, restaurants.getAddress());
             statement.setString(3, restaurants.getDescription());
             statement.setString(4, restaurants.getRating().toString());
             statement.setString(5, restaurants.getImageSource());
+            statement.setString(6, restaurants.getMenuSource());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -117,7 +122,8 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
                 String imageSource = resultSet.getString("imageSource");
-                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource);
+                String menuSource = resultSet.getString("menuSource");
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource, menuSource);
                 restaurant.setId(id);
                 return restaurant;
             }
@@ -141,7 +147,8 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                 String description = resultSet.getString("description");
                 Float rating = resultSet.getFloat("rating");
                 String imageSource = resultSet.getString("imageSource");
-                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource);
+                String menuSource = resultSet.getString("menuSource");
+                Restaurant restaurant = new Restaurant(id, name, address, description, rating, imageSource, menuSource);
                 restaurant.setId(id);
                 restaurants.add(restaurant);
             }

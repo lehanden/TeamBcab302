@@ -48,7 +48,7 @@
             <Text fx:id="description" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0" />
         </VBox>
          <Button layoutX="340.0" layoutY="230.0" mnemonicParsing="false" onAction="#onForward" text="Book" />
-         <Button layoutX="440.0" layoutY="230.0" mnemonicParsing="false" text="Menu" />
+         <Button layoutX="440.0" layoutY="230.0" mnemonicParsing="false" onAction="#onMenu" text="Menu" />
       <Button layoutX="8.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
     </AnchorPane>
 </VBox>

@@ -10,16 +10,20 @@ import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import com.example.dinnerreserver.model.Restaurant;
 
 
 public class RestaurantController {
 
     SqliteRestaurantDAO restaurantDAO;
+    Restaurant restaurant;
 
     @FXML
     private ImageView restaurantImage;
@@ -47,7 +51,6 @@ public class RestaurantController {
     @FXML
     private ImageView star5;
 
-
     public RestaurantController() {
         restaurantDAO = new SqliteRestaurantDAO();
         restaurantDAO.insertSampleData();
@@ -57,6 +60,8 @@ public class RestaurantController {
     public Restaurant selectRestaurant(Integer restaurantId) throws FileNotFoundException
     {
         Restaurant restaurant = restaurantDAO.getRestaurant(restaurantId);
+        this.restaurant = restaurant;
+
         Float restaurantRating = restaurant.getRating();
         String rating_score = STR."\{restaurantRating.toString()} / 5";
         name.setText(restaurant.getName());
@@ -110,5 +115,13 @@ public class RestaurantController {
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         Stage stage = (Stage) Stage.getWindows().get(0);
         stage.setScene(scene);
+    }
+
+    @FXML
+    private void onMenu() throws URISyntaxException, IOException {
+        String menuSource;
+        menuSource = restaurant.getMenuSource();
+
+        Desktop.getDesktop().browse(new URI(menuSource));
     }
 }
