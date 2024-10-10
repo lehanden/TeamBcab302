@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="Removed Dependency Graph From Maven">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_17_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_09_2024_17_32__Changes_.xml" afterDir="false" />
+    <list default="true" id="be561ebc-0c06-4a5c-a4f8-ed9ec3aae897" name="Changes" comment="css update final">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/restaurantstylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/browsepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/browsepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/landingpage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/dinnerreserver/userprofilepage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +23,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="seatlimits" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,16 +44,10 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302&quot;,
-    &quot;accountId&quot;: &quot;2969fdf4-993d-4a7b-9d79-c70a9ca4e23f&quot;
+    &quot;url&quot;: &quot;https://github.com/lehanden/TeamBcab302.git&quot;,
+    &quot;accountId&quot;: &quot;452c58fe-5b63-4129-a639-62644e3f6e24&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/BrowseController.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MavenRunner">
-    <option name="jreName" value="22" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -58,41 +57,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.All in dinnerreserver.executor": "Run",
-    "JUnit.RestaurantTest.executor": "Run",
-    "Maven.dinnerreserver [test].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/darcy/IdeaProjects/TeamBcab302/src/main/java/com/example/dinnerreserver",
-    "last_opened_file_path": "C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver",
-    "onboarding.tips.debug.path": "C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;detached&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/darcy/IdeaProjects/TeamBcab302/src/main/java/com/example/dinnerreserver&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Liam/Uni/CAB302/Assignment/DinnerReserver&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Liam/Uni/CAB302/week2/DinnerReserver/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\darcy\IdeaProjects\TeamBcab302\src\test\java" />
-      <recent name="C:\Users\darcy\IdeaProjects\TeamBcab302\src" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.example.dinnerreserver" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+}</component>
+  <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.dinnerreserver.HelloApplication" />
       <module name="dinnerreserver" />
@@ -106,30 +92,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in dinnerreserver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dinnerreserver" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RestaurantTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dinnerreserver" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="RestaurantTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="JUnit.RestaurantTest" />
-        <item itemvalue="JUnit.All in dinnerreserver" />
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="JUnit.RestaurantTest" />
       </list>
     </recent_temporary>
   </component>
@@ -230,79 +195,31 @@
       <option name="project" value="LOCAL" />
       <updated>1726471913637</updated>
     </task>
-    <task id="LOCAL-00012" summary="Set up profile button on browse page">
+    <task id="LOCAL-00012" summary="Pls fix v3">
       <option name="closed" value="true" />
-      <created>1726732196172</created>
+      <created>1726735218575</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1726732196172</updated>
+      <updated>1726735218575</updated>
     </task>
-    <task id="LOCAL-00013" summary="tried my best but couldnt do it">
+    <task id="LOCAL-00013" summary="css update">
       <option name="closed" value="true" />
-      <created>1726755414991</created>
+      <created>1728446679739</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1726755414991</updated>
+      <updated>1728446679739</updated>
     </task>
-    <task id="LOCAL-00014" summary="Finished Bookingpage looking dynamic, started on booking table but incomplete">
+    <task id="LOCAL-00014" summary="css update final">
       <option name="closed" value="true" />
-      <created>1726785685860</created>
+      <created>1728456543867</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1726785685860</updated>
+      <updated>1728456543867</updated>
     </task>
-    <task id="LOCAL-00015" summary="FIXED MASTER :DDDDDD">
-      <option name="closed" value="true" />
-      <created>1726881647029</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1726881647029</updated>
-    </task>
-    <task id="LOCAL-00016" summary="FIXED MASTER :DDDDDD">
-      <option name="closed" value="true" />
-      <created>1726881676117</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1726881676117</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fixed user profile page">
-      <option name="closed" value="true" />
-      <created>1726887321459</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1726887321459</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Updated Maven plugin to use JUnit 5">
-      <option name="closed" value="true" />
-      <created>1728307985063</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1728307985063</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Updated Maven to use Java 21">
-      <option name="closed" value="true" />
-      <created>1728308289030</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1728308289030</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Removed Dependency Graph From Maven">
-      <option name="closed" value="true" />
-      <created>1728309410591</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1728309410591</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -316,7 +233,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/detached" />
                       </list>
                     </value>
                   </entry>
@@ -340,15 +257,10 @@
     <MESSAGE value="Added basic Browse Page, linked to landingpage by test button" />
     <MESSAGE value="Added back button to Restaurant page for increased functionality" />
     <MESSAGE value="Set up blank User-Profile page. Linked to landingpage" />
-    <MESSAGE value="Set up profile button on browse page" />
-    <MESSAGE value="tried my best but couldnt do it" />
-    <MESSAGE value="Finished Bookingpage looking dynamic, started on booking table but incomplete" />
-    <MESSAGE value="FIXED MASTER :DDDDDD" />
-    <MESSAGE value="fixed user profile page" />
-    <MESSAGE value="Updated Maven plugin to use JUnit 5" />
-    <MESSAGE value="Updated Maven to use Java 21" />
-    <MESSAGE value="Removed Dependency Graph From Maven" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Dependency Graph From Maven" />
+    <MESSAGE value="Pls fix v3" />
+    <MESSAGE value="css update" />
+    <MESSAGE value="css update final" />
+    <option name="LAST_COMMIT_MESSAGE" value="css update final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,6 +269,11 @@
           <properties class="java.lang.ClassNotFoundException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dinnerreserver/controller/LandingController.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -366,6 +283,9 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TeamBcab302$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1728533400575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.dinnerreserver.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/DinnerReserver$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1725687864772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.dinnerreserver.*</FILTER>
     </SUITE>

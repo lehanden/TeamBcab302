@@ -12,12 +12,16 @@ public class HelloApplication extends Application {
     // Constants defining the window title and size
     public static final String TITLE = "SB Eats";
     //public static final int WIDTH = 1000;
-    //public static final int HEIGHT = 500;
+    //public static final int HEIGHT = 664;
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        String stylesheet = HelloApplication.class.getResource("stylesheet.css").toExternalForm();
+        scene.getStylesheets().add(stylesheet);
+
         stage.setTitle(TITLE);
         stage.setScene(scene);
         stage.show();
