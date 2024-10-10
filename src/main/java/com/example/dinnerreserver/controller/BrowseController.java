@@ -52,7 +52,11 @@ public class BrowseController {
         restaurantManager = new RestaurantManager(new SqliteRestaurantDAO());
         loadRestaurantsFromDB();
         populateRestaurantUI(restaurantList);
-        searchField.setOnAction(event -> searchRestaurants());
+
+        //searchField.setOnAction(event -> searchRestaurants());
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchRestaurants(newValue);
+        });
     }
 
     @FXML
@@ -106,8 +110,8 @@ public class BrowseController {
 //            e.printStackTrace();
 //        }
     }
-    private void searchRestaurants(){
-        String query = searchField.getText();
+    private void searchRestaurants(String query){
+        //String query = searchField.getText();
         List<Restaurant> searchResults = restaurantManager.searchRestaurants(query);
         populateRestaurantUI(searchResults);
     }
