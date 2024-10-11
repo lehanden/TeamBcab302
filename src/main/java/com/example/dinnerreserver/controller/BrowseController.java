@@ -42,6 +42,8 @@ public class BrowseController {
 
     private List<Restaurant> restaurantList = new ArrayList<>();
 
+    private String currentSortOption = null;
+
     public User loggedInUser;
 
     @FXML
@@ -63,7 +65,9 @@ public class BrowseController {
 
         sort.valueProperty().addListener((observable, oldValue, newValue) ->{
             if (newValue != null) {
-                sortRestaurants(newValue);
+                currentSortOption = newValue;
+                List<Restaurant> sortedList = sortRestaurants(restaurantList);
+                populateRestaurantUI(sortedList);
             }
         });
     }
@@ -122,18 +126,22 @@ public class BrowseController {
     private void searchRestaurants(String query){
         //String query = searchField.getText();
         List<Restaurant> searchResults = restaurantManager.searchRestaurants(query);
-        populateRestaurantUI(searchResults);
+        List<Restaurant> sortedResults = sortRestaurants(searchResults);
+        populateRestaurantUI(sortedResults);
     }
 
-    private void sortRestaurants(String sortOption){
-        if(sortOption.equals("Alphabetical")){
-            restaurantList.sort((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
-        }
-        else if(sortOption.equals("Rating")){
-            restaurantList.sort((r1, r2) -> Float.compare(r2.getRating(), r1.getRating()));
-        }
+    private List<Restaurant> sortRestaurants(List<Restaurant> restaurantsToSort){
 
-        populateRestaurantUI(restaurantList);
+        List<Restaurant> mutableList = new ArrayList<>(restaurantsToSort);
+
+        if(currentSortOption != null) {
+            if (currentSortOption.equals("Alphabetical")) {
+                mutableList.sort((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
+            } else if (currentSortOption.equals("Rating")) {
+                mutableList.sort((r1, r2) -> Float.compare(r2.getRating(), r1.getRating()));
+            }
+        }
+        return mutableList;
     }
 
     // Populate the ScrollPane with restaurant data
