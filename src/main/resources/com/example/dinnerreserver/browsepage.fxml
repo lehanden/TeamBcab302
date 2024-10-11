@@ -19,7 +19,7 @@
             </image>
         </ImageView>
         <TextField fx:id="searchField" layoutX="25.0" layoutY="42.0" prefHeight="26.0" prefWidth="435.0" promptText="Search..." />
-        <ComboBox fx:id="sort" layoutX="471.0" layoutY="43.0" prefHeight="26.0" prefWidth="115.0" promptText="Sort" />
+        <ComboBox fx:id="sort" layoutX="471.0" layoutY="43.0" prefHeight="26.0" prefWidth="115.0" promptText="Sort By: " />
         <Button layoutX="526.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBack" prefHeight="17.0" prefWidth="60.0" text="Log out" />
       <Button layoutX="25.0" layoutY="13.0" mnemonicParsing="false" onAction="#onProfile" text="Profile" />
     </children>

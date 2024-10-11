@@ -59,7 +59,7 @@ public class BrowseController {
             searchRestaurants(newValue);
         });
 
-        sort.getItems().addAll("Alphabetical", "By Rating");
+        sort.getItems().addAll("Alphabetical", "Rating");
 
         sort.valueProperty().addListener((observable, oldValue, newValue) ->{
             if (newValue != null) {
@@ -129,7 +129,7 @@ public class BrowseController {
         if(sortOption.equals("Alphabetical")){
             restaurantList.sort((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
         }
-        else if(sortOption.equals("By Rating")){
+        else if(sortOption.equals("Rating")){
             restaurantList.sort((r1, r2) -> Float.compare(r2.getRating(), r1.getRating()));
         }
 
