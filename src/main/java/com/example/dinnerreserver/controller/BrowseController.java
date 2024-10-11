@@ -36,6 +36,9 @@ public class BrowseController {
     @FXML
     private TextField searchField;
 
+    @FXML
+    private ComboBox<String> sort;
+
 
     private List<Restaurant> restaurantList = new ArrayList<>();
 
@@ -54,6 +57,14 @@ public class BrowseController {
         //searchField.setOnAction(event -> searchRestaurants());
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             searchRestaurants(newValue);
+        });
+
+        sort.getItems().addAll("Alphabetical", "By Rating");
+
+        sort.valueProperty().addListener((observable, oldValue, newValue) ->{
+            if (newValue != null) {
+                sortRestaurants(newValue);
+            }
         });
     }
 
@@ -112,6 +123,17 @@ public class BrowseController {
         //String query = searchField.getText();
         List<Restaurant> searchResults = restaurantManager.searchRestaurants(query);
         populateRestaurantUI(searchResults);
+    }
+
+    private void sortRestaurants(String sortOption){
+        if(sortOption.equals("Alphabetical")){
+            restaurantList.sort((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
+        }
+        else if(sortOption.equals("By Rating")){
+            restaurantList.sort((r1, r2) -> Float.compare(r2.getRating(), r1.getRating()));
+        }
+
+        populateRestaurantUI(restaurantList);
     }
 
     // Populate the ScrollPane with restaurant data
