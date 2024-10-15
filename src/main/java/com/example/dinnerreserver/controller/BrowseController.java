@@ -21,6 +21,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/**
+ * A controller for the browse page using restaurants from the database
+ */
 public class BrowseController {
 
     SqliteRestaurantDAO restaurantDAO;
@@ -46,6 +49,9 @@ public class BrowseController {
 
     public User loggedInUser;
 
+    /**
+     * Loads the browse page with restaurants from the database
+     */
     @FXML
     public void initialize() {
         loggedInUser = MainController.loggedInUser;
@@ -192,6 +198,10 @@ public class BrowseController {
         alert.showAndWait();
     }
 
+    /**
+     * Updates the logged-in user
+     * @param user The currently logged-in user
+     */
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;
         if (loggedInUser != null) {

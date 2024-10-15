@@ -18,6 +18,9 @@ import java.util.List;
 import com.example.dinnerreserver.model.Restaurant;
 import com.example.dinnerreserver.model.SqliteBookingDAO;
 
+/**
+ * A controller for the booking page for the restaurant that is selected
+ */
 public class BookingController {
 
     private List<String> disabledTimeSlots = new ArrayList<>();
@@ -40,14 +43,17 @@ public class BookingController {
     private User loggedInUser;
     private Restaurant selectedRestaurant;
 
+    /**
+     * Creates a new instance of the restaurant and booking database access objects
+     */
     public BookingController() {
-
         restaurantDAO = new SqliteRestaurantDAO();
         bookingDAO = new SqliteBookingDAO();
     }
 
-
-
+    /**
+     * Loads the booking page and available time slots
+     */
     @FXML
     public void initialize() {
         loggedInUser = MainController.loggedInUser;
@@ -91,6 +97,10 @@ public class BookingController {
         timeComboBox.getSelectionModel().selectFirst(); // Select the first available time slot by default
     }
 
+    /**
+     * Sets restaurant variables on the booking page
+     * @param restaurant The selected restaurant
+     */
     public void setRestaurant(Restaurant restaurant) {
         this.selectedRestaurant = restaurant;
         if (restaurant != null) {

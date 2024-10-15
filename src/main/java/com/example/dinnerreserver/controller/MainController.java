@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * A controller for the user account creation and verification pages
+ */
 public class MainController {
     private IUserDAO userDAO;
 
@@ -29,8 +32,14 @@ public class MainController {
     @FXML
     private TextField loginPasswordTextField;
 
+    /**
+     * The currently logged-in user
+     */
     public static User loggedInUser;
 
+    /**
+     * Creates a new instance of the user database access object
+     */
     public MainController() {
         userDAO = new SqliteUserDAO();
     }

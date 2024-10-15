@@ -11,7 +11,11 @@ import java.io.IOException;
 
 import static com.example.dinnerreserver.HelloApplication.*;
 
+/**
+ * A controller for the landing page when the app is opened
+ */
 public class LandingController {
+
 
     @FXML
     private void onSignUpButton() throws IOException
@@ -31,34 +35,34 @@ public class LandingController {
         stage.setScene(scene);
     }
 
-    public void onRestaurantButton() throws IOException
-    {
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("restaurantpage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        RestaurantController restaurantController = fxmlLoader.getController();
-        restaurantController.selectRestaurant(1);
-        stage.setScene(scene);
-    }
+//    public void onRestaurantButton() throws IOException
+//    {
+//        Stage stage = (Stage) Stage.getWindows().get(0);
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("restaurantpage.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+//        RestaurantController restaurantController = fxmlLoader.getController();
+//        restaurantController.selectRestaurant(1);
+//        stage.setScene(scene);
+//    }
 
-    public void onBrowseButton() throws IOException
-    {
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        BrowseController browseController = fxmlLoader.getController();
-        stage.setScene(scene);
-    }
+//    public void onBrowseButton() throws IOException
+//    {
+//        Stage stage = (Stage) Stage.getWindows().get(0);
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("browsepage.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+//        BrowseController browseController = fxmlLoader.getController();
+//        stage.setScene(scene);
+//    }
 
-    public void onUserProfileButton() throws IOException
-    {
-        Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
-        UserProfileController userprofileController = fxmlLoader.getController();
+    //public void onUserProfileButton() throws IOException
+    //{
+        //Stage stage = (Stage) Stage.getWindows().get(0);
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("userprofilepage.fxml"));
+        //Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        //UserProfileController userprofileController = fxmlLoader.getController();
         //userprofileController.selectUser(1);
-        stage.setScene(scene);
-    }
+        //stage.setScene(scene);
+    //}
     //public void onBookingPageButton() throws IOException
     //{
       //  Stage stage = (Stage) Stage.getWindows().get(0);

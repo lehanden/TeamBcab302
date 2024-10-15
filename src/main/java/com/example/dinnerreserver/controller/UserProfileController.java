@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**
+ * A controller for the user profile page for the logged-in user
+ */
 public class UserProfileController {
 
     SqliteUserDAO UserProfileDAO;
@@ -25,6 +28,9 @@ public class UserProfileController {
     @FXML
     private PasswordField password;
 
+    /**
+     * Creates a new instance of the user database access object
+     */
     public UserProfileController() {
         UserProfileDAO = new SqliteUserDAO();
     }

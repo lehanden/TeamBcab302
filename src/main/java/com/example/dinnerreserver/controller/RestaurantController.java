@@ -19,7 +19,9 @@ import java.net.URISyntaxException;
 
 import com.example.dinnerreserver.model.Restaurant;
 
-
+/**
+ * A controller for the restaurant page based on the restaurant that is selected
+ */
 public class RestaurantController {
 
     SqliteRestaurantDAO restaurantDAO;
@@ -51,11 +53,20 @@ public class RestaurantController {
     @FXML
     private ImageView star5;
 
+    /**
+     * Creates a new instance of the restaurant database access object
+     */
     public RestaurantController() {
         restaurantDAO = new SqliteRestaurantDAO();
         restaurantDAO.insertSampleData();
     }
 
+    /**
+     * Constructs the restaurant page using the restaurant database information
+     * @param restaurantId Id of the loaded restaurant
+     * @return Restaurant instance
+     * @throws FileNotFoundException
+     */
     @FXML
     public Restaurant selectRestaurant(Integer restaurantId) throws FileNotFoundException
     {
