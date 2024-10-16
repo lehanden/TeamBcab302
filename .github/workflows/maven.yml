@@ -32,6 +32,6 @@ jobs:
     - name: Generate Javadoc
       run: mvn javadoc:javadoc
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@v4.1.0
       with:
         folder: target/docs/javadoc
