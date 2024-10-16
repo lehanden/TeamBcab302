@@ -8,9 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The database access object for the users table
+ */
 public class SqliteUserDAO implements IUserDAO {
     private Connection connection;
 
+    /**
+     * Constructor method for the database connection and table
+     */
     public SqliteUserDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
@@ -30,7 +36,6 @@ public class SqliteUserDAO implements IUserDAO {
             e.printStackTrace();
         }
     }
-
 
     private void insertSampleData() {
         try {
@@ -67,7 +72,6 @@ public class SqliteUserDAO implements IUserDAO {
         }
     }
 
-
     @Override
     public void updateUser(User user) {
         try {
@@ -81,8 +85,6 @@ public class SqliteUserDAO implements IUserDAO {
             e.printStackTrace();
         }
     }
-
-
 
     @Override
     public void deleteUser(User user) {
@@ -114,7 +116,6 @@ public class SqliteUserDAO implements IUserDAO {
         }
         return null;
     }
-
 
     @Override
     public List<User> getAllUsers() {
@@ -157,6 +158,4 @@ public class SqliteUserDAO implements IUserDAO {
         }
         return null;
     }
-
-
 }

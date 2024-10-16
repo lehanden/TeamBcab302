@@ -3,10 +3,16 @@ package com.example.dinnerreserver.model;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * The database access object for the bookings table
+ */
 public class SqliteBookingDAO implements IBookingDAO {
 
     private Connection connection;
 
+    /**
+     * Constructor method for the database connection and table
+     */
     public SqliteBookingDAO() {
         connection = SqliteConnection.getInstance();
         createTable();

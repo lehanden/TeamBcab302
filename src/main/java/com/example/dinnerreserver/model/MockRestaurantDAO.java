@@ -1,6 +1,10 @@
 package com.example.dinnerreserver.model;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * A database access object for a mock restaurant used for testing
+ */
 public class MockRestaurantDAO implements IRestaurantDAO{
     private ArrayList<Restaurant> restaurants = new ArrayList<>();
     private int autoIncrementedId = 0;
@@ -31,6 +35,7 @@ public class MockRestaurantDAO implements IRestaurantDAO{
     public void deleteRestaurant(Restaurant restaurant) {
         restaurants.remove(restaurant);
     }
+
     @Override
     public Restaurant getRestaurant(int id) {
         for(Restaurant restaurant : restaurants) {

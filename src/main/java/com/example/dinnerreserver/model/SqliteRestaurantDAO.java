@@ -8,10 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The database access object for the restaurants table
+ */
 public class SqliteRestaurantDAO implements IRestaurantDAO {
 
     private Connection connection;
 
+    /**
+     * Constructor method for the database connection and table
+     */
     public SqliteRestaurantDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
@@ -41,6 +47,9 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
         }
     }
 
+    /**
+     * Inserts restaurant data into the database table
+     */
     public void insertSampleData() {
         try {
             Statement checkStatement = connection.createStatement();
@@ -107,7 +116,18 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
 
     @Override
     public void updateRestaurant(Restaurant restaurant) {
-
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE restaurants SET name = ?, address = ?, description = ?, rating = ?, imageSource = ?, menuSource = ? WHERE id = ?");
+            statement.setString(1, restaurant.getName());
+            statement.setString(2, restaurant.getAddress());
+            statement.setString(3, restaurant.getDescription());
+            statement.setFloat(4, restaurant.getRating());
+            statement.setString(5, restaurant.getImageSource());
+            statement.setString(6, restaurant.getMenuSource());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
