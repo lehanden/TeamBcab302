@@ -74,14 +74,14 @@ public class RestaurantController {
         this.restaurant = restaurant;
 
         Float restaurantRating = restaurant.getRating();
-        String rating_score = STR."\{restaurantRating.toString()} / 5";
+        String rating_score = restaurantRating + " / 5";
         name.setText(restaurant.getName());
         address.setText(restaurant.getAddress());
         description.setText(restaurant.getDescription());
         rating.setText(rating_score);
 
         String imageSource = restaurant.getImageSource();
-        Image restaurantImageSource = new Image(new FileInputStream(STR."./src/main/resources/com/example/dinnerreserver/\{imageSource}"));
+        Image restaurantImageSource = new Image(new FileInputStream("./src/main/resources/com/example/dinnerreserver/" + imageSource));
 
         restaurantImage.setImage(restaurantImageSource);
 
