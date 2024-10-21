@@ -55,6 +55,16 @@ public class MainController {
             return;
         }
 
+        if(userDAO.getUserByUsername(username) != null){
+            showAlert(AlertType.INFORMATION, "Invalid Username", "This username already exists, please choose another.");
+            return;
+        }
+
+        if(userDAO.getUserByEmail(email) != null){
+            showAlert(AlertType.INFORMATION, "Invalid Email", "This email is already in use, please choose another.");
+            return;
+        }
+
         if(!isValidEmail(email)){
             showAlert(AlertType.INFORMATION, "Invalid Email", "please enter a valid email address.");
             return;
@@ -132,5 +142,4 @@ public class MainController {
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         return email.matches(emailRegex);
     }
-
 }

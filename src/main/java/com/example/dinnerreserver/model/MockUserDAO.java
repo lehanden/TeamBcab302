@@ -74,4 +74,13 @@ public class MockUserDAO implements IUserDAO {
         }
         return null;
     }
+
+    public User getUserByEmail(String email){
+        for(User user : users){
+            if(user.getEmail().equals(email)){
+                return user;
+            }
+        }
+        return null;
+    }
 }

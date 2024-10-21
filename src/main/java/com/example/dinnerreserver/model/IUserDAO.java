@@ -40,5 +40,7 @@ public interface IUserDAO {
     public List<User> getAllUsers();
 
     User getUserByUsername(String username);
+
+    User getUserByEmail(String email);
 }
 
