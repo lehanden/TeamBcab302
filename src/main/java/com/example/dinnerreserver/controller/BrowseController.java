@@ -83,7 +83,7 @@ public class BrowseController {
     private void onBack() throws IOException {
         showAlert("Log Out", "You have been successfully logged out.");
         Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("loginpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setScene(scene);
     }
