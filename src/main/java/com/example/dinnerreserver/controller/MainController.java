@@ -50,19 +50,23 @@ public class MainController {
         String email = emailTextField.getText();
         String password = passwordTextField.getText();
 
-        if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-            User newUser = new User(username, email, password);
-            userDAO.addUser(newUser);
-            clearCreateAccountFields();
-            //current user
-            loggedInUser = newUser;
-            //System.out.println("Creation Successful! Welcome "+ username);
-            showAlert(AlertType.INFORMATION, "Creation Successful", "Account Created, welcome " + username + ".");
-            onForward();
+        if(username.isEmpty() || email.isEmpty() || password.isEmpty()){
+            showAlert(AlertType.INFORMATION, "Creation Unsuccessful", "Please fill in all fields");
+            return;
         }
-        else{
-            showAlert(AlertType.INFORMATION, "Creation Unsuccessful", "Please fill in all fields.");
+
+        if(!isValidEmail(email)){
+            showAlert(AlertType.INFORMATION, "Invalid Email", "please enter a valid email address.");
+            return;
         }
+
+        User newUser = new User(username, email, password);
+        userDAO.addUser(newUser);
+        clearCreateAccountFields();
+
+        loggedInUser = newUser;
+        showAlert(AlertType.INFORMATION, "Creation Successful", "Account Created, welcome " + username + ".");
+        onForward();
     }
 
     @FXML
@@ -122,6 +126,11 @@ public class MainController {
         usernameTextField.clear();
         emailTextField.clear();
         passwordTextField.clear();
+    }
+
+    private boolean isValidEmail(String email){
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        return email.matches(emailRegex);
     }
 
 }

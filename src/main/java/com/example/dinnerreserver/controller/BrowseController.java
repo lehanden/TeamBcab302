@@ -78,13 +78,28 @@ public class BrowseController {
             applySearchAndSort();
         });
     }
+//    @FXML
+//    private void onBack() throws IOException {
+//        Stage stage = (Stage) Stage.getWindows().get(0);
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+//
+//        // Add the stylesheet
+//        String stylesheet = HelloApplication.class.getResource("stylesheet.css").toExternalForm();
+//        scene.getStylesheets().add(stylesheet);
+//
+//        stage.setScene(scene);
+//    }
 
     @FXML
     private void onBack() throws IOException {
         showAlert("Log Out", "You have been successfully logged out.");
         Stage stage = (Stage) Stage.getWindows().get(0);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("loginpage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("landingpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+                // Add the stylesheet
+        String stylesheet = HelloApplication.class.getResource("stylesheet.css").toExternalForm();
+        scene.getStylesheets().add(stylesheet);
         stage.setScene(scene);
     }
     @FXML
