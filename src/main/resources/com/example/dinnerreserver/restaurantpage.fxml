@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@restaurantpagestylesheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.RestaurantController">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@restaurantpagestylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.RestaurantController">
     <AnchorPane prefHeight="362.0" prefWidth="644.0" VBox.vgrow="ALWAYS">
         <ImageView fx:id="restaurantImage" fitHeight="150.0" fitWidth="216.0" layoutX="34.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
         <HBox layoutX="67" layoutY="205.0">
