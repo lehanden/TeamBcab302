@@ -46,6 +46,7 @@ public class BrowseController {
     private List<Restaurant> restaurantList = new ArrayList<>();
 
     private String currentSortOption = null;
+    private String currentSearchQuery = "";
 
     public User loggedInUser;
 
@@ -60,21 +61,21 @@ public class BrowseController {
 //        populateRestaurantUI();
         restaurantManager = new RestaurantManager(new SqliteRestaurantDAO());
         loadRestaurantsFromDB();
-        populateRestaurantUI(restaurantList);
+        //populateRestaurantUI(restaurantList);
+        applySearchAndSort();
 
+        //Search listener
         //searchField.setOnAction(event -> searchRestaurants());
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchRestaurants(newValue);
+            currentSearchQuery = newValue;
+            applySearchAndSort();
         });
 
+        //Sort Listener
         sort.getItems().addAll("Alphabetical", "Rating");
-
         sort.valueProperty().addListener((observable, oldValue, newValue) ->{
-            if (newValue != null) {
-                currentSortOption = newValue;
-                List<Restaurant> sortedList = sortRestaurants(restaurantList);
-                populateRestaurantUI(sortedList);
-            }
+            currentSortOption = newValue;
+            applySearchAndSort();
         });
     }
 
@@ -129,11 +130,19 @@ public class BrowseController {
 //            e.printStackTrace();
 //        }
     }
-    private void searchRestaurants(String query){
-        //String query = searchField.getText();
-        List<Restaurant> searchResults = restaurantManager.searchRestaurants(query);
-        List<Restaurant> sortedResults = sortRestaurants(searchResults);
-        populateRestaurantUI(sortedResults);
+
+    private void applySearchAndSort(){
+        List<Restaurant> filteredRestaurants = searchRestaurants(currentSearchQuery);
+        List<Restaurant> sortedRestaurants = sortRestaurants(filteredRestaurants);
+        populateRestaurantUI(sortedRestaurants);
+    }
+
+    private List<Restaurant> searchRestaurants(String query){
+        if(query == null || query.isEmpty()){
+            return new ArrayList<>(restaurantList);
+        }else{
+            return restaurantManager.searchRestaurants(query);
+        }
     }
 
     private List<Restaurant> sortRestaurants(List<Restaurant> restaurantsToSort){
