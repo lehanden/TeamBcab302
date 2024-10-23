@@ -4,6 +4,8 @@ import com.example.dinnerreserver.model.Restaurant;
 import com.example.dinnerreserver.model.RestaurantManager;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -73,6 +75,63 @@ public class RestaurantTest {
         assertEquals(2, restaurants.size());
         assertTrue(restaurants.get(0).getName().equals("San Kai Japanese Restaurant"));
         assertTrue(restaurants.get(1).getName().equals("Olé Restaurant"));
+    }
+
+    @Test
+    public void testSortByAlphabetical() {
+        for (Restaurant restaurant : restaurants) {
+            restaurantManager.addRestaurant(restaurant);
+        }
+        List<Restaurant> sortedRestaurants = restaurantManager.sortRestaurantsAlphabetically(restaurantManager.getAllRestaurants());
+        assertEquals("Geláre South Bank", sortedRestaurants.get(0).getName());
+        assertEquals("Olé Restaurant", sortedRestaurants.get(1).getName());
+        assertEquals("San Kai Japanese Restaurant", sortedRestaurants.get(2).getName());
+    }
+    @Test
+    public void testSortByAlphabeticalWithNoResults() {
+        List<Restaurant> emptyList = restaurantManager.sortRestaurantsAlphabetically(new ArrayList<>());
+
+        // Verify that the result is still an empty list
+        assertEquals(0, emptyList.size());
+    }
+
+    @Test
+    public void testSortByRating() {
+        for (Restaurant restaurant : restaurants) {
+            restaurantManager.addRestaurant(restaurant);
+        }
+        List<Restaurant> sortedRestaurants = restaurantManager.sortRestaurantsByRating(restaurantManager.getAllRestaurants());
+        assertEquals("Olé Restaurant", sortedRestaurants.get(0).getName()); // Highest rating first
+        assertEquals("Geláre South Bank", sortedRestaurants.get(1).getName());
+        assertEquals("San Kai Japanese Restaurant", sortedRestaurants.get(2).getName()); // Lowest rating last
+    }
+    @Test
+    public void testSortByRatingWithNoResults() {
+        List<Restaurant> emptyList = restaurantManager.sortRestaurantsByRating(new ArrayList<>());
+        assertEquals(0, emptyList.size());
+    }
+
+    @Test
+    public void testSearchAndSortByRating() {
+        for (Restaurant restaurant : restaurants) {
+            restaurantManager.addRestaurant(restaurant);
+        }
+        List<Restaurant> searchResults = restaurantManager.searchRestaurants("Restaurant");
+        List<Restaurant> sortedResults = restaurantManager.sortRestaurantsByRating(searchResults);
+        assertEquals(2, sortedResults.size());
+        assertEquals("Olé Restaurant", sortedResults.get(0).getName()); // Sorted by rating
+        assertEquals("San Kai Japanese Restaurant", sortedResults.get(1).getName());
+    }
+    @Test
+    public void testSearchAndSortByAlphabetical() {
+        for (Restaurant restaurant : restaurants) {
+            restaurantManager.addRestaurant(restaurant);
+        }
+        List<Restaurant> searchResults = restaurantManager.searchRestaurants("Restaurant");
+        List<Restaurant> sortedResults = restaurantManager.sortRestaurantsAlphabetically(searchResults);
+        assertEquals(2, sortedResults.size());
+        assertEquals("Olé Restaurant", sortedResults.get(0).getName()); // Sorted alphabetically
+        assertEquals("San Kai Japanese Restaurant", sortedResults.get(1).getName());
     }
 
 

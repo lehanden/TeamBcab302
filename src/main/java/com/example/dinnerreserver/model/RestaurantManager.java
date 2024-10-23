@@ -1,5 +1,6 @@
 package com.example.dinnerreserver.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,5 +70,29 @@ public class RestaurantManager {
      */
     public List<Restaurant> getAllRestaurants(){
         return restaurantDAO.getAllRestaurants();
+    }
+
+    /**
+     *
+     * @param restaurantList A list of restaurants
+     * @return the restaurant list sorted Alphabetically
+     */
+    public List<Restaurant> sortRestaurantsAlphabetically(List<Restaurant> restaurantList) {
+        // Create a mutable copy of the list
+        List<Restaurant> mutableList = new ArrayList<>(restaurantList);
+        mutableList.sort((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
+        return mutableList;
+    }
+
+    /**
+     *
+     * @param restaurantList A list of restaurants
+     * @return the restaurant list sorted by highest rating
+     */
+    public List<Restaurant> sortRestaurantsByRating(List<Restaurant> restaurantList) {
+        // Create a mutable copy of the list
+        List<Restaurant> mutableList = new ArrayList<>(restaurantList);
+        mutableList.sort((r1, r2) -> Float.compare(r2.getRating(), r1.getRating()));  // Sort by rating in descending order
+        return mutableList;
     }
 }
