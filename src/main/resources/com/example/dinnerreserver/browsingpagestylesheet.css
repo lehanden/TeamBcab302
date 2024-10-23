@@ -2,7 +2,7 @@
 
 /* Style for the root pane */
 .root {
-    -fx-background-color: #2d211f; /* Dark brown for the root background */
+    -fx-background-color: #292121; /* Dark brown for the root background */
 }
 
 /* Style for the AnchorPane */
@@ -17,13 +17,13 @@
 }
 /* Style for the ScrollPane viewport */
 .scroll-pane .viewport {
-    -fx-background-color: #2d211f;
+    -fx-background-color: #292121;
 }
 .scroll-pane .viewport Label {
     -fx-text-fill: white; /* Darker text color (foreground color) */
 }
 .scroll-pane .corner {
-    -fx-background-color: #2d211f; /* Set this to the same brown as your overall background */
+    -fx-background-color: #292121; /* Set this to the same brown as your overall background */
 }
 /* Style for the increment and decrement buttons on the ScrollBar */
 .scroll-bar .increment-button,
@@ -59,14 +59,14 @@
 
 /* Style for the VBox inside the ScrollPane */
 #restaurantContainer {
-    -fx-background-color: #2d211f; /* No background color for the VBox */
+    -fx-background-color: #292121; /* No background color for the VBox */
     -fx-padding: 10; /* Padding inside the VBox */
     -fx-spacing: 10; /* Spacing between items */
 }
 
 /* Style for the individual items inside the VBox (only these will have a visible background) */
 #restaurantContainer .item {
-    -fx-background-color: #2d211f; /* Light brown background for individual items */
+    -fx-background-color: #292121; /* Light brown background for individual items */
     -fx-border-color: #ffffff; /* Light border for individual items */
     -fx-border-width: 1; /* Border width for the items */
     -fx-padding: 10; /* Padding inside items */
@@ -117,6 +117,6 @@
 
 /* Style the ScrollBar's thumb (the draggable part) */
 .scroll-bar .thumb {
-    -fx-background-color: #2d211f; /* Grey color for the thumb */
+    -fx-background-color: #292121; /* Grey color for the thumb */
     -fx-background-radius: 5; /* Rounded corners for the thumb */
 }
