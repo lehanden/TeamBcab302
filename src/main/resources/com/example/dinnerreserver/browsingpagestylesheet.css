@@ -1,55 +1,122 @@
 /* stylesheet.css */
 
+/* Style for the root pane */
 .root {
-    -fx-background-color: #292121;
+    -fx-background-color: #2d211f; /* Dark brown for the root background */
 }
 
 /* Style for the AnchorPane */
 .anchor-pane {
-    -fx-background-color: #292121; /* Light grey background */
+    -fx-background-color: #f8f1e7; /* Light beige background for the AnchorPane */
 }
 
-/* Style for the ScrollPane */
+/* Style for the ScrollPane background (light background for the scroll box itself) */
 .scroll-pane {
-    -fx-background-color: transparent; /* Transparent background */
-    -fx-border-color: #cccccc; /* Light border */
-    -fx-border-width: 1; /* Border width */
+    -fx-background-color: transparent;
+    -fx-border-color: transparent; /* Remove the border */
 }
+/* Style for the ScrollPane viewport */
+.scroll-pane .viewport {
+    -fx-background-color: #2d211f;
+}
+.scroll-pane .viewport Label {
+    -fx-text-fill: white; /* Darker text color (foreground color) */
+}
+.scroll-pane .corner {
+    -fx-background-color: #2d211f; /* Set this to the same brown as your overall background */
+}
+/* Style for the increment and decrement buttons on the ScrollBar */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent; /* Make buttons transparent */
+    -fx-border-color: transparent; /* Remove any borders */
+    -fx-background-radius: 0; /* Remove any rounded corners */
+    -fx-font-size: 12px; /* Set a fixed font size */
+    -fx-font-weight: normal; /* Ensure font weight is normal */
+    -fx-padding: 3px; /* Set padding for buttons to ensure they are clickable */
+}
+/* Style for the arrow symbols inside the buttons */
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #f8f1e7; /* color for the arrow symbol itself */
+}
+/* Add hover effect for scroll buttons */
+.scroll-bar .increment-button:hover,
+.scroll-bar .decrement-button:hover {
+     -fx-background-color: transparent; /* Make sure hover effect is transparent */
+     -fx-border-color: transparent; /* No border change on hover */
+     -fx-font-size: 12px; /* Ensure font size stays the same */
+     -fx-font-weight: normal; /* Prevent bold effect on hover */
+     -fx-padding: 3; /* Prevent size increase on hover */
+}
+
+/* Change arrow color on hover */
+.scroll-bar .increment-arrow:hover,
+.scroll-bar .decrement-arrow:hover {
+    -fx-background-color: #f8f1e7; /* Keep the arrow color the same on hover */
+}
+
 
 /* Style for the VBox inside the ScrollPane */
 #restaurantContainer {
-    -fx-background-color: #ffffff; /* White background for content */
+    -fx-background-color: #2d211f; /* No background color for the VBox */
     -fx-padding: 10; /* Padding inside the VBox */
+    -fx-spacing: 10; /* Spacing between items */
 }
 
-/* Style for TextField */
+/* Style for the individual items inside the VBox (only these will have a visible background) */
+#restaurantContainer .item {
+    -fx-background-color: #2d211f; /* Light brown background for individual items */
+    -fx-border-color: #ffffff; /* Light border for individual items */
+    -fx-border-width: 1; /* Border width for the items */
+    -fx-padding: 10; /* Padding inside items */
+}
+
+/* Style for Search Bar */
 .text-field {
-    -fx-background-color: #ffffff; /* White background */
+    -fx-background-color: #f5e6d4;
     -fx-border-color: #cccccc; /* Light border */
     -fx-border-width: 1; /* Border width */
     -fx-padding: 5; /* Padding inside the TextField */
+    -fx-text-fill: #000000; /* Black text color */
+    -fx-prompt-text-fill: #000000;
 }
 
 /* Style for ComboBox */
 .combo-box {
-    -fx-background-color: #ffffff; /* White background */
+    -fx-background-color: #f5e6d4; /* Light brown background */
     -fx-border-color: #cccccc; /* Light border */
     -fx-border-width: 1; /* Border width */
+    -fx-padding: 5; /* Padding inside */
 }
 
-/button {
-     -fx-background-color: #f0e9d7;
-     -fx-text-fill: black;
-     -fx-border-color: white;
-     -fx-border-radius: 5;
+/* Style for Buttons */
+.button {
+    -fx-background-color: #f5e6d4; /* Light brown background */
+    -fx-text-fill: black;
+    -fx-border-color: white;
+    -fx-border-radius: 5;
+    -fx-padding: 8 15; /* Button padding */
+}
 
- }
+/* Set color of button when mouse hovers over it */
+.button:hover {
+    -fx-background-color: #2e2e2e; /* Dark hover background */
+    -fx-text-fill: white;
+}
 
- /* Set color of button when mouse hovers over it */
- .button:hover {
-     -fx-background-color: #2e2e2e;
-     -fx-text-fill: white;
- }
+/* Style for ScrollBar in ScrollPane */
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+/* Style the ScrollBar's track (the area the thumb moves in) */
+.scroll-bar .track {
+    -fx-background-color: #f5e6d4; /* Light brown background for the track */
+}
 
-
-
+/* Style the ScrollBar's thumb (the draggable part) */
+.scroll-bar .thumb {
+    -fx-background-color: #2d211f; /* Grey color for the thumb */
+    -fx-background-radius: 5; /* Rounded corners for the thumb */
+}
