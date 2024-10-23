@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 import java.awt.*;
 import java.io.FileInputStream;
@@ -81,9 +82,30 @@ public class RestaurantController {
         rating.setText(rating_score);
 
         String imageSource = restaurant.getImageSource();
-        Image restaurantImageSource = new Image(new FileInputStream("./src/main/resources/com/example/dinnerreserver/" + imageSource));
+        String imagePath = "./src/main/resources/com/example/dinnerreserver/" + imageSource;
 
-        restaurantImage.setImage(restaurantImageSource);
+        //Runnable allowing image to be loaded (for multithreading)
+        Runnable loadImageRunnable = new Runnable(){
+            @Override
+            public void run(){
+                try {
+                    Image image = new Image(new FileInputStream(imagePath));
+
+                    Platform.runLater(new Runnable(){
+                        @Override
+                        public void run(){
+                            restaurantImage.setImage(image);
+                        }
+                    });
+                } catch (FileNotFoundException e){
+                    System.err.println("Failed to load image: " + e.getMessage());
+                }
+            }
+        };
+
+        //Starts runnable in new thread
+        Thread imageLoadThread = new Thread(loadImageRunnable);
+        imageLoadThread.start();
 
         if(restaurantRating > 4.4) {
             star1.setVisible(true);
