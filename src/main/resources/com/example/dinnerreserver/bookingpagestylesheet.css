@@ -24,25 +24,60 @@
     -fx-border-radius: 10px;
     -fx-text-fill: black;
 }
+/* Default style for the entire ComboBox (including the selected item and arrow button) */
 .combo-box {
-    -fx-background-color: #f5e6d4;
+    -fx-background-color: #f5e6d4; /* Light brown for the ComboBox by default */
     -fx-border-color: white;
     -fx-text-fill: black;
     -fx-border-radius: 10px;
 }
-.combo-box .list-cell {
-    -fx-background-color: #f5e6d4;
+
+/* Specific style for the ComboBox base (the part showing the selected item) */
+.combo-box .combo-box-base {
+    -fx-background-color: #f5e6d4; /* Make sure the selected item is also light brown */
     -fx-text-fill: black;
+}
+
+/* Style for the arrow button */
+.combo-box .arrow-button {
+    -fx-background-color: #f5e6d4; /* Light brown for the arrow button */
+    -fx-border-radius: 0 10px 10px 0; /* Match the rounded corners */
+}
+
+/* Hover effect on the entire ComboBox, including both the text area and arrow button */
+.combo-box:hover .combo-box-base,
+.combo-box:hover .arrow-button {
+    -fx-background-color: #2e2e2e; /* Darker color for both the base and the arrow button */
+    -fx-text-fill: white; /* Ensure text turns white */
+}
+
+/* Default style for the items in the drop-down list (light brown by default) */
+.list-view .list-cell {
+    -fx-background-color: #f5e6d4; /* Light brown background */
+    -fx-text-fill: black;
+}
+
+/* Hover effect for the list items */
+.list-view .list-cell:hover {
+    -fx-background-color: #2e2e2e; /* Dark grey when hovering over an item */
+    -fx-text-fill: white; /* Change text color when hovering */
+}
+
+/* Ensure the selected item in the ComboBox stays light brown */
+.combo-box .button-cell {
+    -fx-background-color: #f5e6d4; /* Ensure the selected item shows the light brown color */
+    -fx-text-fill: black; /* Keep text color black */
 }
 .button {
-    -fx-background-color: #f5e6d4;
+    -fx-background-color: #f0e9d7;
     -fx-text-fill: black;
-    -fx-font-weight: bold;
-    -fx-border-radius: 20px;
-    -fx-padding: 10px 20px;
+    -fx-border-color: white;
+    -fx-border-radius: 5;
+    -fx-font-size: 16px;    /* Increase font size */
+    -fx-padding: 10px;      /* Add padding */
 }
 .button:hover {
-    -fx-background-color: #d4c5b2;
-    -fx-cursor: hand;
+    -fx-background-color: #2e2e2e;
+    -fx-text-fill: white;
 }
 

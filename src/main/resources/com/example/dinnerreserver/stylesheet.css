@@ -14,6 +14,7 @@
 /* Set color of button when mouse hovers over it */
 .button:hover {
     -fx-background-color: #2e2e2e;
+    -fx-text-fill: white;
 }
 
 /* Set color of node with fx:id="confirmBtn" */

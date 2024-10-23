@@ -4,35 +4,32 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BookingController" stylesheets="@bookingpagestylesheet.css">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@bookingpagestylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dinnerreserver.controller.BookingController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
             <Label fx:id="name" layoutX="50.0" layoutY="30.0">
                <font>
-                  <Font size="24.0"/>
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label fx:id="address" layoutX="50.0" layoutY="60.0">
                <font>
-                  <Font size="14.0"/>
+                  <Font size="14.0" />
                </font>
             </Label>
 
             <!-- Number of People -->
-            <Label layoutX="250.0" layoutY="100.0" text="Number of People:"/>
-            <TextField fx:id="peopleTextField" layoutX="400.0" layoutY="95.0" prefWidth="150.0"/>
+            <Label layoutX="250.0" layoutY="100.0" text="Number of People:" />
+            <TextField fx:id="peopleTextField" layoutX="400.0" layoutY="95.0" prefWidth="150.0" />
 
             <!-- Time Selection -->
-            <Label layoutX="250.0" layoutY="150.0" text="Select time:"/>
+            <Label layoutX="250.0" layoutY="150.0" text="Select time:" />
             <ComboBox fx:id="timeComboBox" layoutX="400.0" layoutY="145.0" prefWidth="150.0" />
 
             <!-- Book and Cancel Buttons -->
-            <Button fx:id="bookButton" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" text="Book" onAction="#onBookButton" />
-            <Button fx:id="cancelButton" layoutX="450.0" layoutY="250.0" mnemonicParsing="false" text="Cancel" onAction="#onCancelButton" />
+            <Button fx:id="bookButton" layoutX="382.0" layoutY="225.0" mnemonicParsing="false" onAction="#onBookButton" prefHeight="42.0" prefWidth="73.0" text="Book" />
+            <Button fx:id="cancelButton" layoutX="488.0" layoutY="225.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="42.0" prefWidth="74.0" text="Cancel" />
          </children>
       </AnchorPane>
    </children>

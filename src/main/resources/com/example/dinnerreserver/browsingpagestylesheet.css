@@ -82,12 +82,49 @@
     -fx-prompt-text-fill: #000000;
 }
 
-/* Style for ComboBox */
+/* Default style for the entire ComboBox (including the selected item and arrow button) */
 .combo-box {
+    -fx-background-color: #f5e6d4; /* Light brown for the ComboBox by default */
+    -fx-border-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 10px;
+}
+
+/* Specific style for the ComboBox base (the part showing the selected item) */
+.combo-box .combo-box-base {
+    -fx-background-color: #f5e6d4; /* Make sure the selected item is also light brown */
+    -fx-text-fill: black;
+}
+
+/* Style for the arrow button */
+.combo-box .arrow-button {
+    -fx-background-color: #f5e6d4; /* Light brown for the arrow button */
+    -fx-border-radius: 0 10px 10px 0; /* Match the rounded corners */
+}
+
+/* Hover effect on the entire ComboBox, including both the text area and arrow button */
+.combo-box:hover .combo-box-base,
+.combo-box:hover .arrow-button {
+    -fx-background-color: #2e2e2e; /* Darker color for both the base and the arrow button */
+    -fx-text-fill: white; /* Ensure text turns white */
+}
+
+/* Default style for the items in the drop-down list (light brown by default) */
+.list-view .list-cell {
     -fx-background-color: #f5e6d4; /* Light brown background */
-    -fx-border-color: #cccccc; /* Light border */
-    -fx-border-width: 1; /* Border width */
-    -fx-padding: 5; /* Padding inside */
+    -fx-text-fill: black;
+}
+
+/* Hover effect for the list items */
+.list-view .list-cell:hover {
+    -fx-background-color: #2e2e2e; /* Dark grey when hovering over an item */
+    -fx-text-fill: white; /* Change text color when hovering */
+}
+
+/* Ensure the selected item in the ComboBox stays light brown */
+.combo-box .button-cell {
+    -fx-background-color: #f5e6d4; /* Ensure the selected item shows the light brown color */
+    -fx-text-fill: black; /* Keep text color black */
 }
 
 /* Style for Buttons */
