@@ -3,6 +3,7 @@ import com.example.dinnerreserver.model.SqliteBookingDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -102,5 +103,18 @@ public class BookingTest {
     public void testCountBookingsForTimeSlotWithNoBookings() {
         int count = bookingDAO.countBookingsForTimeSlot(999, "2024-10-25 19:00");
         assertEquals(0, count); // No bookings should return 0
+    }
+
+    @Test
+    public void testDeleteBooking() {
+        Booking newBooking = new Booking(1, 101, 4, "2024-10-25 19:00");
+        bookingDAO.addBooking(newBooking);
+
+        // Delete the booking
+        bookingDAO.deleteBooking(newBooking);
+
+        // Ensure that no booking exists with this ID anymore
+        Booking deletedBooking = bookingDAO.getBooking(newBooking.getBookingId());
+        assertNull(deletedBooking); // The booking should be null after deletion
     }
 }
