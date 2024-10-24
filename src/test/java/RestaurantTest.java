@@ -1,10 +1,13 @@
-import com.example.dinnerreserver.model.MockRestaurantDAO;
-import com.example.dinnerreserver.model.Restaurant;
+import com.example.dinnerreserver.model.*;
 
 import com.example.dinnerreserver.model.RestaurantManager;
+import com.example.dinnerreserver.model.SharedData;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.Method;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,6 +136,155 @@ public class RestaurantTest {
         assertEquals("Olé Restaurant", sortedResults.get(0).getName()); // Sorted alphabetically
         assertEquals("San Kai Japanese Restaurant", sortedResults.get(1).getName());
     }
+    @Test
+    public void testDeleteRestaurant() {
+        for (Restaurant restaurant : restaurants) {
+            restaurantManager.addRestaurant(restaurant);
+        }
 
+        // Delete one restaurant
+        restaurantManager.deleteRestaurant(restaurants[0]);
+
+        // Verify the restaurant was deleted
+        List<Restaurant> remainingRestaurants = restaurantManager.getAllRestaurants();
+        assertEquals(2, remainingRestaurants.size()); // There should be only 2 restaurants now
+        assertFalse(remainingRestaurants.contains(restaurants[0])); // Ensure the deleted restaurant is no longer present
+    }
+
+    @Test
+    public void testDeleteNonExistentRestaurant() {
+        for (Restaurant restaurant : restaurants) {
+            restaurantManager.addRestaurant(restaurant);
+        }
+
+        // Attempt to delete a restaurant that was never added
+        Restaurant nonExistentRestaurant = new Restaurant(4, "Non Existent Restaurant", "123 Nowhere St", "This restaurant does not exist.", 5.0F, "NonExistent.jpg", "https://nonexistent.com/menu");
+        restaurantManager.deleteRestaurant(nonExistentRestaurant);
+
+        // Verify that no restaurants were deleted
+        List<Restaurant> remainingRestaurants = restaurantManager.getAllRestaurants();
+        assertEquals(3, remainingRestaurants.size()); // There should still be 3 restaurants
+    }
 
 }
+class SharedDataTest {
+
+    @BeforeEach
+    public void resetSharedData() {
+        // Reset the selected restaurant to null before each test
+        SharedData.getInstance().setSelectedRestaurant(null);
+    }
+
+    @Test
+    public void testSingletonInstance() {
+        // Verify that only one instance is created
+        SharedData instance1 = SharedData.getInstance();
+        SharedData instance2 = SharedData.getInstance();
+        assertSame(instance1, instance2, "SharedData should return the same instance");
+    }
+
+    @Test
+    public void testSetSelectedRestaurant() {
+        // Create a new restaurant and set it as selected
+        Restaurant restaurant = new Restaurant(1, "Test Restaurant", "123 Test St", "Test Description", 4.5F, "test.jpg", "https://test.com");
+        SharedData sharedData = SharedData.getInstance();
+        sharedData.setSelectedRestaurant(restaurant);
+
+        // Verify that the selected restaurant is correctly set
+        assertEquals(restaurant, sharedData.getSelectedRestaurant(), "Selected restaurant should match the one set");
+    }
+
+    @Test
+    public void testGetSelectedRestaurantInitiallyNull() {
+        // Verify that initially the selected restaurant is null
+        SharedData sharedData = SharedData.getInstance();
+        assertNull(sharedData.getSelectedRestaurant(), "Initially, the selected restaurant should be null");
+    }
+
+    @Test
+    public void testUpdateSelectedRestaurant() {
+        // Set a restaurant, then update it to a new restaurant and verify
+        Restaurant restaurant1 = new Restaurant(1, "Test Restaurant 1", "123 Test St", "Test Description 1", 4.5F, "test1.jpg", "https://test1.com");
+        Restaurant restaurant2 = new Restaurant(2, "Test Restaurant 2", "456 Test Ave", "Test Description 2", 3.5F, "test2.jpg", "https://test2.com");
+
+        SharedData sharedData = SharedData.getInstance();
+        sharedData.setSelectedRestaurant(restaurant1);
+        assertEquals(restaurant1, sharedData.getSelectedRestaurant(), "The first restaurant should be selected");
+
+        // Update the selected restaurant
+        sharedData.setSelectedRestaurant(restaurant2);
+        assertEquals(restaurant2, sharedData.getSelectedRestaurant(), "The selected restaurant should be updated to the new one");
+    }
+}
+class SqliteRestaurantDAOTest extends SqliteRestaurantDAO {
+
+    private SqliteRestaurantDAO restaurantDAO;
+    private Connection connection;
+
+    @BeforeEach
+    public void setUp() throws Exception {
+        // Use an in-memory SQLite database for testing
+        connection = DriverManager.getConnection("jdbc:sqlite::memory:");
+        restaurantDAO = new SqliteRestaurantDAO() {
+            protected Connection getConnection() {
+                return connection; // Return the in-memory connection for testing
+            }
+        };
+        createTable(); // You can now access the protected createTable() method
+        restaurantDAO.insertSampleData();
+    }
+
+    @Test
+    public void testAddRestaurant() {
+        // Create and add a new restaurant
+        Restaurant newRestaurant = new Restaurant(0, "Test Restaurant", "123 Test St", "Test description", 4.0F, "test.jpg", "https://test.com");
+        restaurantDAO.addRestaurant(newRestaurant);
+
+        // Fetch the restaurant from the database
+        Restaurant fetchedRestaurant = restaurantDAO.getRestaurant(newRestaurant.getId());
+
+        // Compare each field individually instead of the whole object
+        assertEquals(newRestaurant.getId(), fetchedRestaurant.getId());
+        assertEquals(newRestaurant.getName(), fetchedRestaurant.getName());
+        assertEquals(newRestaurant.getAddress(), fetchedRestaurant.getAddress());
+        assertEquals(newRestaurant.getDescription(), fetchedRestaurant.getDescription());
+        assertEquals(newRestaurant.getRating(), fetchedRestaurant.getRating());
+        assertEquals(newRestaurant.getImageSource(), fetchedRestaurant.getImageSource());
+        assertEquals(newRestaurant.getMenuSource(), fetchedRestaurant.getMenuSource());
+    }
+
+    @Test
+    public void testDeleteRestaurant() {
+        Restaurant newRestaurant = new Restaurant(0, "Test Restaurant", "123 Test St", "Test description", 4.0F, "test.jpg", "https://test.com");
+        restaurantDAO.addRestaurant(newRestaurant);
+        int id = newRestaurant.getId();
+
+        // Delete the restaurant
+        restaurantDAO.deleteRestaurant(newRestaurant);
+
+        // Verify the restaurant was deleted
+        Restaurant fetchedRestaurant = restaurantDAO.getRestaurant(id);
+        assertNull(fetchedRestaurant, "Restaurant should be deleted");
+    }
+
+
+    @Test
+    public void testGetRestaurant() {
+        // Add a new restaurant and fetch it
+        Restaurant newRestaurant = new Restaurant(0, "Test Restaurant", "123 Test St", "Test description", 4.0F, "test.jpg", "https://test.com");
+        restaurantDAO.addRestaurant(newRestaurant);
+
+        // Fetch the restaurant from the database
+        Restaurant fetchedRestaurant = restaurantDAO.getRestaurant(newRestaurant.getId());
+
+        // Compare each field instead of the entire object
+        assertEquals(newRestaurant.getId(), fetchedRestaurant.getId());
+        assertEquals(newRestaurant.getName(), fetchedRestaurant.getName());
+        assertEquals(newRestaurant.getAddress(), fetchedRestaurant.getAddress());
+        assertEquals(newRestaurant.getDescription(), fetchedRestaurant.getDescription());
+        assertEquals(newRestaurant.getRating(), fetchedRestaurant.getRating());
+        assertEquals(newRestaurant.getImageSource(), fetchedRestaurant.getImageSource());
+        assertEquals(newRestaurant.getMenuSource(), fetchedRestaurant.getMenuSource());
+    }
+}
+

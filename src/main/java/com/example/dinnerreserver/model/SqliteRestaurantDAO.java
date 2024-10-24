@@ -24,7 +24,7 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
         insertSampleData();
     }
 
-    private void createTable() {
+    protected void createTable() {
         try {
             Statement delete = connection.createStatement();
             String deleteQuery = "DROP TABLE IF EXISTS restaurants";

@@ -22,6 +22,10 @@ public class SqliteUserDAO implements IUserDAO {
         createTable();
     }
 
+    public Connection getConnection() {
+        return this.connection;
+    }
+
     private void createTable() {
         try {
             Statement statement = connection.createStatement();
