@@ -75,7 +75,49 @@ public class SqliteRestaurantDAO implements IRestaurantDAO {
                         "'Ice cream, smoothies and low-fat frozen yoghurt, plus classic breakfasts, in a bright cafe chain.', " +
                         "3.9," +
                         "'Restaurant3.jpg'," +
-                        "'https://gelare.com.au/menu/')";
+                        "'https://gelare.com.au/menu/'),"
+                    + "('The Spaghetti House Trattoria'," +
+                        "'Little Stanley St &, Grey St'," +
+                        "'Familiar Italian dishes served in a stylish, wood-paneled space with big windows & a patio.'," +
+                        "4.0," +
+                        "'Restaurant4.jpg'," +
+                        "'http://www.spaghettihouse.com.au/menu/'),"
+                    + "('Sage Yellowfin'," +
+                        "'164 Little Stanley St'," +
+                        "'Sage Yellowfin, we want you to explore diverse cuisine from around the world. Whether you are a fan of exotic spices or international delicacies, our curated menu caters for every palate.'," +
+                        "4.3," +
+                        "'Restaurant5.jpg'," +
+                        "'https://yellowfinrestaurant.com.au/southbank/menu-pdf/'),"
+                    + "('Ahmet''s Turkish Restaurant'," +
+                        "'Shop 10/168 Grey St'," +
+                        "'Bright Turkish restaurant filled with rugs and lanterns, serving feasting dishes to share.'," +
+                        "4.3," +
+                        "'Restaurant6.jpg'," +
+                        "'https://ahmets.com/menus/'),"
+                    + "('Denim Co.'," +
+                        "'Shop/9A Little Stanley St'," +
+                        "'Denim Co. is the answer to every coffee addict’s prayers. This iconic cafe is tucked away on South Bank''s teeming ‘Little Stanley St’, housing a selection of irresistible sweet treats alongside tasty all day breakfast (until 3pm) and delicious lunch to late evening dining options.'," +
+                        "4.0," +
+                        "'Restaurant7.jpg'," +
+                        "'https://www.denimcocafe.com/#denimco'),"
+                    + "('Barbossa Bar & Bottle Shop'," +
+                        "'7/166 Grey St'," +
+                        "'Here at Barbossa Bar & Bottle Shop, we have built an experience as vibrant as the Caribbean.'," +
+                        "4.2," +
+                        "'Restaurant8.jpg'," +
+                        "'https://www.barbossabar.com.au/_files/ugd/06e752_8052fb1a2634463791ba52fe80cad69b.pdf'),"
+                    + "('San Churro South Bank'," +
+                        "'Shop 2/161 Grey St'," +
+                        "'Vibrant chain cafe offering churros & decadent desserts, plus organic, fair-trade coffee.'," +
+                        "3.7," +
+                        "'Restaurant9.jpg'," +
+                        "'https://www.sanchurro.com/'),"
+                    + "('Ovello Bar and Kitchen'," +
+                        "'161 Grey St'," +
+                        "'Ovello Bar & Kitchen is inspired by relaxed Mediterranean holidays, sun-soaked terraces, lush gardens, colourful parasols and the casual vibes of the Amalfi Coast.'," +
+                        "3.4," +
+                        "'Restaurant10.jpg'," +
+                        "'https://www.ovello.com.au/menus/')";
                 insertStatement.execute(insertQuery);
             }
         } catch (Exception e) {
